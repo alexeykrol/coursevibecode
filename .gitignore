@@ -1,0 +1,9 @@
+.env
+.env.*
+*credentials*
+*.pem
+*.key
+.claude/.last_session
+.claude/.session-owner
+.claude/logs/
+reports/

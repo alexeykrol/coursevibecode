@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Export</title>
+  <style>
+    :root {
+      --bg-primary: #1a1a2e;
+      --bg-secondary: #16213e;
+      --bg-tertiary: #0f3460;
+      --text-primary: #eee;
+      --text-secondary: #aaa;
+      --text-muted: #666;
+      --accent: #e94560;
+      --accent-dim: #c73e54;
+      --success: #4ade80;
+      --warning: #fbbf24;
+      --border: #333;
+      --user-bg: #1e3a5f;
+      --assistant-bg: #2d2d44;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .header-controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .search-box {
+      padding: 8px 12px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 1.05rem;
+      width: 250px;
+    }
+
+    .search-box:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .stats {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+      height: calc(100vh - 200px);
+    }
+
+    .panel {
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-header {
+      padding: 12px 16px;
+      background: var(--bg-tertiary);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .panel-title {
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    .panel-content {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    /* Sessions/Dialogs List */
+    .item-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .item-card {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .item-card:hover {
+      background: var(--bg-tertiary);
+    }
+
+    .item-card.selected {
+      background: var(--user-bg);
+    }
+
+    .item-row-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .item-row-top-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .item-date {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .item-meta {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .item-row-bottom {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .session-date {
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+
+    .session-summary {
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .session-meta {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .export-status {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+
+    .export-status.exported {
+      background: var(--success);
+    }
+
+    .export-status.not-exported {
+      background: var(--warning);
+    }
+
+    /* Public Toggle Checkbox */
+    .public-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .public-checkbox {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--success);
+    }
+
+    .public-label {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-left: 4px;
+    }
+
+    .visibility-badge {
+      font-size: 1.1rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .visibility-badge.public {
+      background: rgba(74, 222, 128, 0.2);
+      color: var(--success);
+    }
+
+    .visibility-badge.private {
+      background: rgba(251, 191, 36, 0.2);
+      color: var(--warning);
+    }
+
+    .visibility-badge.not-exported {
+      background: rgba(102, 102, 102, 0.2);
+      color: var(--text-muted);
+    }
+
+    /* Make Summary Button */
+    .btn-make {
+      padding: 3px 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-make:hover {
+      background: var(--accent-dim);
+    }
+
+    .btn-make.pending {
+      background: var(--warning);
+      color: var(--bg-primary);
+      cursor: wait;
+    }
+
+    .pending-badge {
+      font-size: 1.1rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(251, 191, 36, 0.2);
+      color: var(--warning);
+    }
+
+    /* Dialog View */
+    .dialog-view {
+      padding: 16px;
+    }
+
+    .dialog-empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      margin-bottom: 16px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 1.05rem;
+    }
+
+    .message.user {
+      background: var(--user-bg);
+      border-left: 3px solid var(--accent);
+    }
+
+    .message.assistant {
+      background: var(--assistant-bg);
+      border-left: 3px solid var(--success);
+    }
+
+    .message-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .message-role {
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .message.user .message-role {
+      color: var(--accent);
+    }
+
+    .message.assistant .message-role {
+      color: var(--success);
+    }
+
+    .message-time {
+      color: var(--text-muted);
+    }
+
+    .message-content {
+      word-break: break-word;
+      line-height: 1.6;
+    }
+
+    .message-content p {
+      margin: 0 0 0.75rem 0;
+    }
+
+    .message-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Markdown content styling for dialog messages */
+    .markdown-content h3 {
+      padding: 12px 16px;
+      margin: 16px 0 0 0;
+      border-radius: 8px 8px 0 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .markdown-content h3 + p,
+    .markdown-content h3 + ul,
+    .markdown-content h3 + pre,
+    .markdown-content h3 + blockquote {
+      padding: 12px 16px;
+      margin: 0 0 16px 0;
+      border-radius: 0 0 8px 8px;
+    }
+
+    /* User messages */
+    .markdown-content h3.msg-user {
+      background: var(--user-bg);
+      border-left: 3px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .markdown-content h3.msg-user + p,
+    .markdown-content h3.msg-user + ul,
+    .markdown-content h3.msg-user + pre,
+    .markdown-content h3.msg-user + blockquote {
+      background: var(--user-bg);
+      border-left: 3px solid var(--accent);
+    }
+
+    /* Claude messages */
+    .markdown-content h3.msg-assistant {
+      background: var(--assistant-bg);
+      border-left: 3px solid var(--success);
+      color: var(--success);
+    }
+
+    .markdown-content h3.msg-assistant + p,
+    .markdown-content h3.msg-assistant + ul,
+    .markdown-content h3.msg-assistant + pre,
+    .markdown-content h3.msg-assistant + blockquote {
+      background: var(--assistant-bg);
+      border-left: 3px solid var(--success);
+    }
+
+    .markdown-content hr {
+      border: none;
+      height: 1px;
+      background: var(--border);
+      margin: 16px 0;
+    }
+
+    .markdown-content pre {
+      background: var(--bg-tertiary);
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    .markdown-content code {
+      background: var(--bg-tertiary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    .markdown-content pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .message-content h1, .message-content h2, .message-content h3 {
+      margin: 1rem 0 0.5rem 0;
+      color: var(--text-primary);
+    }
+
+    .message-content h1 { font-size: 1.3rem; }
+    .message-content h2 { font-size: 1.2rem; }
+    .message-content h3 { font-size: 1.1rem; }
+
+    .message-content ul, .message-content ol {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .message-content li {
+      margin: 0.25rem 0;
+    }
+
+    .message-content code {
+      background: rgba(0,0,0,0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    .message-content pre {
+      background: rgba(0,0,0,0.3);
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 0.75rem 0;
+    }
+
+    .message-content pre code {
+      padding: 0;
+      background: none;
+    }
+
+    .message-content a {
+      color: #4a9eff;
+      text-decoration: none;
+    }
+
+    .message-content a:hover {
+      text-decoration: underline;
+    }
+
+    .message-content blockquote {
+      border-left: 3px solid var(--border);
+      margin: 0.75rem 0;
+      padding-left: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .message-content table {
+      border-collapse: collapse;
+      margin: 0.75rem 0;
+      width: 100%;
+    }
+
+    .message-content th, .message-content td {
+      border: 1px solid var(--border);
+      padding: 0.5rem;
+      text-align: left;
+    }
+
+    .message-content th {
+      background: var(--bg-tertiary);
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dim);
+    }
+
+    .btn-secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--border);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Loading */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      color: var(--text-muted);
+    }
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 10px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      background: var(--success);
+      color: var(--bg-primary);
+      border-radius: 6px;
+      font-size: 1.05rem;
+      font-weight: 500;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast.error {
+      background: var(--accent);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 750px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: var(--text-primary);
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--text-primary);
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .modal-body p {
+      margin: 0 0 1rem 0;
+    }
+
+    .modal-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .modal-body h1 {
+      font-size: 1.4rem;
+      margin: 0 0 1rem 0;
+      color: var(--text-primary);
+    }
+
+    .modal-body h2 {
+      font-size: 1.2rem;
+      margin: 1.5rem 0 0.75rem 0;
+      color: var(--text-primary);
+    }
+
+    .modal-body h3 {
+      font-size: 1.1rem;
+      margin: 1rem 0 0.5rem 0;
+      color: var(--text-primary);
+    }
+
+    .modal-body ul, .modal-body ol {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .modal-body li {
+      margin: 0.25rem 0;
+    }
+
+    .modal-body code {
+      background: var(--bg-tertiary);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    .modal-body pre {
+      background: var(--bg-tertiary);
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .modal-body pre code {
+      padding: 0;
+      background: none;
+    }
+
+    .modal-body a {
+      color: #4a9eff;
+      text-decoration: none;
+    }
+
+    .modal-body a:hover {
+      text-decoration: underline;
+    }
+
+    .modal-body hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+
+    /* Summaries */
+    .session-summaries {
+      padding: 12px 16px;
+      background: var(--bg-tertiary);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .session-summaries h3 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .session-summaries ul {
+      list-style: none;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .session-summaries li {
+      padding: 2px 0;
+    }
+
+    .session-summaries li::before {
+      content: "-> ";
+      color: var(--accent);
+    }
+
+    .session-info {
+      padding: 12px 16px;
+      background: var(--bg-tertiary);
+      border-bottom: 1px solid var(--border);
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .session-info strong {
+      color: var(--text-primary);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .layout {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .panel {
+        max-height: 50vh;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-controls {
+        flex-wrap: wrap;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .project-selector {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <h1>Claude Export <span style="font-weight: 400; font-size: 1rem; color: #888;">v2.2.2 · 2025-12-06</span></h1>
+        <div class="header-controls">
+          <input type="text" class="search-box" id="searchBox" placeholder="Search dialogs...">
+          <button class="btn btn-secondary" onclick="openHelpModal()">Помощь</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <!-- Left Panel: Sessions or Dialogs -->
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title" id="leftPanelTitle">Sessions</span>
+          <div class="btn-group">
+            <button class="btn btn-secondary" onclick="forceSync()" title="Force export all new sessions">Force Sync</button>
+            <button class="btn btn-secondary" onclick="refreshData()">Refresh</button>
+          </div>
+        </div>
+        <div class="panel-content" id="leftPanel">
+          <div class="loading">
+            <div class="spinner"></div>
+            Loading...
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Dialog Viewer -->
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title" id="dialogTitle" style="flex: 1;">Select a dialog</span>
+          <button class="btn btn-secondary" id="scrollBtn" onclick="toggleScroll()" title="Scroll to last message">↓ Last</button>
+        </div>
+        <div class="panel-content" id="dialogPanel">
+          <div class="dialog-empty">
+            <span>Select a session or dialog to view</span>
+            <span style="font-size: 0.95rem;">Dialogs are saved to .dialog/ folder</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer style="text-align: center; padding: 1rem 0.5rem 1.5rem; color: #888; font-size: 1.1rem;">
+      © Alex Krol ·
+      <a href="https://github.com/anthropics/claude-export" target="_blank" style="color: #4a9eff; text-decoration: none;">GitHub</a> ·
+      <a href="https://facebook.com/alexkrol" target="_blank" style="color: #4a9eff; text-decoration: none;">Facebook</a> ·
+      <a href="https://linkedin.com/in/alexkrol" target="_blank" style="color: #4a9eff; text-decoration: none;">LinkedIn</a>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Help Modal -->
+  <div class="modal-overlay" id="helpModal" onclick="closeHelpModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Помощь</h2>
+        <button class="modal-close" onclick="closeHelpModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="helpContent">
+        <p>Загрузка...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentTab = 'sessions';
+    let sessions = [];
+    let dialogs = [];
+    let filteredItems = [];
+    let selectedSession = null;
+    let projectInfo = null;
+
+    // Format date with time: "2025-12-05, 15:24"
+    function formatDateTime(sessionDateTime, fallbackDate) {
+      if (sessionDateTime) {
+        const d = new Date(sessionDateTime);
+        // Use local time instead of UTC
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        const date = `${year}-${month}-${day}`;
+        const time = d.toTimeString().slice(0, 5);
+        return `${date}, ${time}`;
+      }
+      return fallbackDate || 'Unknown';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProject();
+      document.getElementById('searchBox').addEventListener('input', filterItems);
+
+      // Auto-refresh data every 10 seconds
+      setInterval(() => {
+        refreshData();
+      }, 10000);
+    });
+
+    async function loadProject() {
+      try {
+        const res = await fetch('/api/project');
+        projectInfo = await res.json();
+        loadSessions();
+      } catch (err) {
+        showToast('Error loading project: ' + err.message, true);
+      }
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll('.tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.tab === tab);
+      });
+
+      document.getElementById('leftPanelTitle').textContent =
+        tab === 'sessions' ? 'Sessions' : 'Exported Dialogs';
+
+      refreshData();
+    }
+
+    function refreshData() {
+      if (currentTab === 'sessions') {
+        loadSessions();
+      } else {
+        loadDialogs();
+      }
+    }
+
+    async function forceSync() {
+      try {
+        showToast('Syncing all sessions...');
+
+        const res = await fetch('/api/force-export', {
+          method: 'POST'
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          showToast(data.message + ` (${data.duration}ms)`);
+          // Refresh the list to show updated sessions
+          refreshData();
+        } else {
+          showToast('Error: ' + (data.error || 'Unknown error'), true);
+        }
+      } catch (err) {
+        showToast('Error: ' + err.message, true);
+      }
+    }
+
+    async function loadSessions() {
+      const panel = document.getElementById('leftPanel');
+      panel.innerHTML = '<div class="loading"><div class="spinner"></div>Loading dialogs...</div>';
+
+      try {
+        // Use /api/dialogs - reads from .dialog/ folder only
+        const res = await fetch('/api/dialogs');
+        const data = await res.json();
+        sessions = data.dialogs;
+        // Sort by sessionDateTime (newest first)
+        sessions.sort((a, b) => {
+          const timeA = new Date(a.sessionDateTime || a.lastModified).getTime();
+          const timeB = new Date(b.sessionDateTime || b.lastModified).getTime();
+          return timeB - timeA;
+        });
+        filteredItems = sessions;
+        renderSessions();
+      } catch (err) {
+        panel.innerHTML = `<div class="dialog-empty">Error: ${err.message}</div>`;
+      }
+    }
+
+    async function loadDialogs() {
+      const panel = document.getElementById('leftPanel');
+      panel.innerHTML = '<div class="loading"><div class="spinner"></div>Loading dialogs...</div>';
+
+      try {
+        const res = await fetch('/api/dialogs');
+        const data = await res.json();
+        dialogs = data.dialogs;
+        filteredItems = dialogs;
+        renderDialogs();
+      } catch (err) {
+        panel.innerHTML = `<div class="dialog-empty">Error: ${err.message}</div>`;
+      }
+    }
+
+    function filterItems() {
+      const query = document.getElementById('searchBox').value.toLowerCase();
+
+      if (currentTab === 'sessions') {
+        filteredItems = sessions.filter(s => {
+          if (query) {
+            const inSummary = s.summaries.some(sum => sum.toLowerCase().includes(query));
+            if (!inSummary) return false;
+          }
+          return true;
+        });
+        renderSessions();
+      } else {
+        filteredItems = dialogs.filter(d => {
+          if (query) {
+            return d.filename.toLowerCase().includes(query);
+          }
+          return true;
+        });
+        renderDialogs();
+      }
+    }
+
+    function renderSessions() {
+      const panel = document.getElementById('leftPanel');
+
+      if (filteredItems.length === 0) {
+        panel.innerHTML = '<div class="dialog-empty">No dialogs found</div>';
+        return;
+      }
+
+      const list = document.createElement('ul');
+      list.className = 'item-list';
+      list.innerHTML = filteredItems.map(s => {
+        const filename = s.filename;
+
+        return `
+        <li class="item-card ${selectedSession?.filename === filename ? 'selected' : ''}"
+            data-filename="${filename}"
+            onclick="selectSession('${filename}')">
+          <div class="item-row-top">
+            <div class="item-row-top-left">
+              <span class="item-date">${formatDateTime(s.sessionDateTime, s.date)}</span>
+              <label class="public-toggle" onclick="event.stopPropagation()">
+                <input type="checkbox" class="public-checkbox"
+                       ${s.isPublic ? 'checked' : ''}
+                       onchange="toggleVisibility('${filename}', this.checked)"
+                       title="Toggle public visibility">
+                <span class="public-label">Public</span>
+              </label>
+            </div>
+            <span class="item-meta">${s.size}</span>
+          </div>
+          <div class="item-row-bottom">
+            ${escapeHtml(s.summaryShort || s.summary || 'No summary')}
+          </div>
+        </li>
+      `}).join('');
+
+      panel.innerHTML = '';
+      panel.appendChild(list);
+    }
+
+    function renderDialogs() {
+      const panel = document.getElementById('leftPanel');
+
+      if (filteredItems.length === 0) {
+        panel.innerHTML = '<div class="dialog-empty">No exported dialogs. Export sessions first.</div>';
+        return;
+      }
+
+      const list = document.createElement('ul');
+      list.className = 'item-list';
+      list.innerHTML = filteredItems.map(d => `
+        <li class="item-card" data-filename="${d.filename}"
+            onclick="selectDialog('${d.filename}')">
+          <div class="item-row-top">
+            <div class="item-row-top-left">
+              <span class="item-date">${formatDateTime(d.sessionDateTime, d.date)}</span>
+              <label class="public-toggle" onclick="event.stopPropagation()">
+                <input type="checkbox" class="public-checkbox"
+                       ${d.isPublic ? 'checked' : ''}
+                       onchange="toggleVisibility('${d.filename}', this.checked)"
+                       title="Toggle public visibility">
+                <span class="public-label">Public</span>
+              </label>
+            </div>
+            <span class="item-meta">${d.size}</span>
+          </div>
+          <div class="item-row-bottom">
+            ${d.summary
+              ? escapeHtml(d.summary)
+              : '<span class="pending-badge">Pending...</span>'
+            }
+          </div>
+        </li>
+      `).join('');
+
+      panel.innerHTML = '';
+      panel.appendChild(list);
+    }
+
+    async function selectSession(filename) {
+      document.querySelectorAll('.item-card').forEach(card => {
+        card.classList.toggle('selected', card.dataset.filename === filename);
+      });
+
+      selectedSession = { filename };
+
+      const panel = document.getElementById('dialogPanel');
+      panel.innerHTML = '<div class="loading"><div class="spinner"></div>Loading dialog...</div>';
+      resetScrollBtn();
+
+      try {
+        // Load from markdown file in .dialog/
+        const res = await fetch(`/api/dialog/${filename}`);
+        const data = await res.json();
+
+        // Find dialog for summary (use full summary for title)
+        const dialog = sessions.find(s => s.filename === filename);
+        const summaryFull = dialog?.summaryFull || dialog?.summary || filename;
+        document.getElementById('dialogTitle').textContent = summaryFull;
+        document.getElementById('dialogTitle').title = summaryFull;
+
+        // Render markdown content
+        panel.innerHTML = `<div class="dialog-view markdown-content">${marked.parse(data.content)}</div>`;
+
+        // Style h3 headers based on emoji content
+        panel.querySelectorAll('h3').forEach(h3 => {
+          const text = h3.textContent || '';
+          if (text.includes('👤') || text.includes('User')) {
+            h3.classList.add('msg-user');
+          } else if (text.includes('🤖') || text.includes('Claude')) {
+            h3.classList.add('msg-assistant');
+          }
+        });
+
+      } catch (err) {
+        panel.innerHTML = `<div class="dialog-empty">Error: ${err.message}</div>`;
+      }
+    }
+
+    async function selectDialog(filename) {
+      document.querySelectorAll('.item-card').forEach(card => {
+        card.classList.toggle('selected', card.dataset.filename === filename);
+      });
+
+      const panel = document.getElementById('dialogPanel');
+      panel.innerHTML = '<div class="loading"><div class="spinner"></div>Loading...</div>';
+      resetScrollBtn();
+
+      try {
+        const res = await fetch(`/api/dialog/${filename}`);
+        const data = await res.json();
+
+        // Show filename as title
+        document.getElementById('dialogTitle').textContent = filename;
+        document.getElementById('dialogTitle').title = filename;
+
+        panel.innerHTML = `<div class="dialog-view"><pre style="white-space: pre-wrap; font-size: 1rem;">${escapeHtml(data.content)}</pre></div>`;
+
+      } catch (err) {
+        panel.innerHTML = `<div class="dialog-empty">Error: ${err.message}</div>`;
+      }
+    }
+
+    async function toggleVisibility(filename, makePublic) {
+      try {
+        const res = await fetch(`/api/dialog/visibility/${filename}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ isPublic: makePublic })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          // Update local state - both arrays since they may share data
+          const dialog = dialogs.find(d => d.filename === filename);
+          if (dialog) {
+            dialog.isPublic = data.isPublic;
+          }
+          const session = sessions.find(s => s.filename === filename);
+          if (session) {
+            session.isPublic = data.isPublic;
+          }
+
+          // Update checkbox state
+          const card = document.querySelector(`.item-card[data-filename="${filename}"]`);
+          if (card) {
+            const checkbox = card.querySelector('.public-checkbox');
+            if (checkbox) {
+              checkbox.checked = data.isPublic;
+            }
+          }
+
+          showToast(`${filename} is now ${data.isPublic ? 'public (will be committed)' : 'private (in .gitignore)'}`);
+        }
+      } catch (err) {
+        showToast('Error: ' + err.message, true);
+        loadDialogs(); // Refresh to sync state
+      }
+    }
+
+    // Toggle visibility for dialog file
+    // isPrivate = true means file should be in .gitignore
+    async function toggleSessionVisibility(filename, isPrivate) {
+      try {
+        const res = await fetch(`/api/dialog/visibility/${filename}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ isPublic: !isPrivate })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          showToast(`${filename} is now ${data.isPublic ? 'public (will be committed)' : 'private (in .gitignore)'}`);
+        } else {
+          showToast('Error: ' + (data.error || 'Unknown error'), true);
+        }
+
+        loadSessions(); // Refresh to update UI
+      } catch (err) {
+        showToast('Error: ' + err.message, true);
+        loadSessions();
+      }
+    }
+
+    async function requestSummary(filename) {
+      try {
+        // Update button state
+        const btn = document.querySelector(`.item-card[data-filename="${filename}"] .btn-make`);
+        if (btn) {
+          btn.textContent = 'Pending...';
+          btn.className = 'btn-make pending';
+          btn.disabled = true;
+        }
+
+        const res = await fetch(`/api/summary/request/${filename}`, {
+          method: 'POST'
+        });
+        const data = await res.json();
+
+        if (data.alreadyExists) {
+          showToast('Summary already exists');
+          loadDialogs();
+        } else if (data.success) {
+          showToast('Task created. Say to Claude: "Process pending summary tasks"');
+        } else {
+          showToast('Error: ' + data.error, true);
+          loadDialogs();
+        }
+      } catch (err) {
+        showToast('Error: ' + err.message, true);
+        loadDialogs();
+      }
+    }
+
+    async function downloadSession() {
+      if (!selectedSession) return;
+      window.location.href = `/api/download/${selectedSession.projectPath}/${selectedSession.id}`;
+    }
+
+    async function exportSession() {
+      if (!selectedSession) return;
+
+      try {
+        const res = await fetch(
+          `/api/export/${selectedSession.projectPath}/${selectedSession.id}`,
+          { method: 'POST' }
+        );
+        const data = await res.json();
+
+        if (data.success) {
+          showToast(`Exported to .dialog/ (private by default)`);
+          loadSessions();
+          loadDialogs();
+        } else {
+          showToast(`Error: ${data.error}`, true);
+        }
+      } catch (err) {
+        showToast(`Error: ${err.message}`, true);
+      }
+    }
+
+    function showToast(message, isError = false) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = 'toast show' + (isError ? ' error' : '');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    async function openHelpModal() {
+      document.getElementById('helpModal').classList.add('show');
+      document.body.style.overflow = 'hidden';
+
+      const content = document.getElementById('helpContent');
+
+      try {
+        const res = await fetch('/help.md');
+        const markdown = await res.text();
+        content.innerHTML = marked.parse(markdown);
+      } catch (err) {
+        content.innerHTML = '<p>Ошибка загрузки справки</p>';
+      }
+    }
+
+    function closeHelpModal(event) {
+      if (!event || event.target === event.currentTarget) {
+        document.getElementById('helpModal').classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeHelpModal();
+      }
+    });
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function formatContent(text) {
+      return marked.parse(text);
+    }
+
+    let isAtBottom = false;
+
+    function toggleScroll() {
+      const panel = document.getElementById('dialogPanel');
+      const btn = document.getElementById('scrollBtn');
+
+      if (isAtBottom) {
+        panel.scrollTop = 0;
+        btn.textContent = '↓ Last';
+        btn.title = 'Scroll to last message';
+        isAtBottom = false;
+      } else {
+        panel.scrollTop = panel.scrollHeight;
+        btn.textContent = '↑ First';
+        btn.title = 'Scroll to first message';
+        isAtBottom = true;
+      }
+    }
+
+    // Reset button when new dialog is loaded
+    function resetScrollBtn() {
+      const btn = document.getElementById('scrollBtn');
+      btn.textContent = '↓ Last';
+      btn.title = 'Scroll to last message';
+      isAtBottom = false;
+    }
+  </script>
+</body>
+</html>

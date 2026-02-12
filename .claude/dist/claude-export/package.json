@@ -1,0 +1,8 @@
+{
+  "name": "claude-export-local",
+  "type": "commonjs",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "express": "^4.21.2"
+  }
+}

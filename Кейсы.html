@@ -1,0 +1,169 @@
+<style>
+    .ai-matrix { width: 100%; border-collapse: collapse; font-family: -apple-system, sans-serif; margin: 20px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); table-layout: fixed; }
+    .ai-matrix th { background-color: #2c3e50; color: white; padding: 10px; text-align: left; font-size: 11px; line-height: 1.2; border: 1px solid #34495e; }
+    .ai-matrix td { padding: 10px 8px; border: 1px solid #eee; font-size: 12px; vertical-align: top; word-wrap: break-word; }
+    .role-text { font-weight: bold; color: #2c3e50; font-size: 11px; display: block; }
+    .status { font-weight: bold; text-align: center; font-size: 1.1em; }
+    .s-plus { color: #27ae60; } /* Зеленый для ДА */
+    .s-minus { color: #e74c3c; } /* Красный для НЕТ */
+</style>
+
+<table class="ai-matrix">
+    <thead>
+        <tr>
+            <th style="width: 12%;">Профессия и Роль</th>
+            <th style="width: 38%;">Ситуация</th>
+            <th style="width: 8%;">ИИ чат (chatGPT)</th>
+            <th style="width: 10%;">Кастомный GPTs</th>
+            <th style="width: 10%;">No-code, Make, n8n</th>
+            <th style="width: 12%;">IDE, Агенты (без создания приложений)</th>
+            <th style="width: 10%;">Создание сайтов и приложений</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span class="role-text">Юрист (специалист)</span></td>
+            <td>Клиент прислал договор «на согласование», сказав, что там «всего пара правок». По факту — документ на 40 страниц, часть формулировок переписана так, что на первый взгляд всё выглядит нейтрально, но интуитивно что-то не так. Времени мало, клиент ждёт комментарии сегодня. Нужно быстро понять, где именно изменился баланс рисков, какие пункты стали опаснее, а какие можно оставить как есть — и при этом не упустить мелкую, но критичную формулировку.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Юрист (менеджер / партнёр)</span></td>
+            <td>В работе одновременно несколько клиентов, каждый со своими дедлайнами и «срочно на вчера». Младшие юристы присылают правки, но глубина анализа разная. Нет времени лично перечитывать всё. Нужно за короткое время понять, где реально есть риск, а где команда просто перестраховывается, чтобы принять решение: что эскалировать, что утвердить, а что вернуть на доработку.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Педагог (специалист)</span></td>
+            <td>Студенты сдали эссе. Кто-то старался, но мысль скачет. Кто-то аккуратно написал, но пусто по смыслу. Проверка вручную превращается в рутину: комментарии повторяются, но хочется, чтобы каждый получил осмысленную обратную связь, а не шаблон. При этом времени ограничено, а «на автомате» проверять уже не хочется — выгорание.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Методолог / продюсер (менеджер)</span></td>
+            <td>Есть материалы от разных авторов: презентации, тексты, видео, заметки в Google Docs. Все вроде бы умные, но курс в целом разваливается: повторы, скачки сложности, нет общей логики. Нужно собрать из этого нормальный образовательный продукт, где понятно, зачем каждый блок, что студент должен понять и уметь, и где он может застрять.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Учёный / исследователь (специалист)</span></td>
+            <td>Нашёл много статей по теме, но чем больше читаешь, тем больше путаницы: одни используют одни термины, другие — другие, выводы противоречат друг другу. Нужно не просто «прочитать», а понять: где реальные расхождения, а где разница в методологии, какие идеи можно использовать в своей работе, а какие лучше сразу отбросить.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Руководитель исследования (менеджер)</span></td>
+            <td>Команда присылает отчёты, но каждый — в своём стиле. Кто-то уходит в детали, кто-то пишет общими словами. Нужно регулярно понимать: что реально продвигается, где застряли, какие гипотезы можно закрывать, а какие — усиливать. Вникать в каждый эксперимент времени нет, но принимать решения всё равно нужно.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Маркетолог (специалист)</span></td>
+            <td>Нужно написать тексты для лендинга и рекламы. Продукт сложный, аудитория неоднородная. То, что нравится внутри команды, не всегда «цепляет» клиентов. Приходится перебирать формулировки, углы подачи, заголовки — и каждый раз есть сомнение: это реально понятно человеку или только нам кажется?</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Head of Marketing (менеджер)</span></td>
+            <td>Идёт несколько кампаний, данные приходят из разных источников. Цифры вроде бы есть, но интерпретации расходятся: одни говорят «масштабируем», другие — «стоп, тут проблемы». Нужно быстро видеть общую картину, понимать, где рост устойчивый, а где иллюзия, и принимать решения без бесконечных созвонов.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Продуктовый менеджер (специалист)</span></td>
+            <td>Пользователи пишут в саппорт, оставляют отзывы, жалуются в комментариях. Много эмоций, мало структуры. Одни и те же проблемы описываются разными словами. Нужно вытащить из этого хаоса реальные паттерны, понять, что болит сильнее всего и что даст максимальный эффект при исправлении.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Product Lead / CPO (менеджер)</span></td>
+            <td>Команда генерирует идеи: новые фичи, улучшения, эксперименты. Всё звучит разумно, но ресурсов ограничено. Нужно быстро оценивать идеи по ценности, рискам и соответствию стратегии, а не по тому, кто громче защищает свою инициативу.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Предприниматель / соло-фаундер</span></td>
+            <td>Один человек делает почти всё: продукт, тексты, продажи, стратегию. Постоянное ощущение, что голова перегружена, решения принимаются на интуиции. Хочется иметь «второй мозг», с которым можно проговорить идеи, проверить гипотезы, быстро набросать тексты или сценарии — без ощущения, что ты разговариваешь с пустотой.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Руководитель малого бизнеса</span></td>
+            <td>Бизнес работает, но многое держится на конкретных людях и ручных процессах. Любая ошибка или уход сотрудника — стресс. Хочется постепенно наводить порядок: описывать процессы, автоматизировать рутину, но без радикальных реформ и дорогих внедрений.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">HR / рекрутер (специалист)</span></td>
+            <td>На вакансию пришло много откликов. Резюме похожи, сопроводительные письма часто шаблонные. Нужно быстро понять, кто реально подходит, а кто просто красиво пишет. При этом важно не отсеять сильного кандидата по формальным признакам.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">HR-менеджер / руководитель</span></td>
+            <td>В компании что-то идёт не так: растёт текучка, падает вовлечённость, но прямых сигналов мало. Есть опросы, фидбек, разговоры «на кухне». Нужно увидеть общую картину, понять причины и решить, где проблема системная, а где частный случай.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Консультант / эксперт</span></td>
+            <td>Клиенты редко приходят с чётким запросом. Чаще — «что-то не работает», «хочу роста», «надо разобраться». Каждый раз приходится задавать десятки вопросов, формировать гипотезы, упаковывать сложные мысли в понятные объяснения. Хочется делать это быстрее и качественнее, не теряя глубину.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+        </tr>
+        <tr>
+            <td><span class="role-text">Любая</span></td>
+            <td>Создание приложения, веб-сайта, компьютерной программы.</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-minus">НЕТ</td>
+            <td class="status s-plus">ДА</td>
+        </tr>
+    </tbody>
+</table>
