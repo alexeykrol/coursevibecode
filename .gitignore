@@ -1,9 +1,7 @@
-.env
-.env.*
-*credentials*
-*.pem
-*.key
-.claude/.last_session
-.claude/.session-owner
-.claude/logs/
-reports/
+# Ignore everything
+*
+
+# Keep ignore rules and README
+!.gitignore
+!README
+!README.md
