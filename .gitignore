@@ -1,7 +1,0 @@
-# Ignore everything
-*
-
-# Keep ignore rules and README
-!.gitignore
-!README
-!README.md
