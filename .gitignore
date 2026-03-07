@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# Keep tracked essentials
+!.gitignore
+!README
+!README.md
+!L1-L10-matrix-simple.md
