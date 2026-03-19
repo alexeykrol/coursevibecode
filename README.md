@@ -1,7 +1,9 @@
 # Бесплатный мини курс. Как внедрить ИИ в свою жизнь и кардинально изменить ее?
 Включая Vibe Coding для не программистов.
 
-Версия 1.22 от 19-03-26
+[![Course Version](https://img.shields.io/badge/Course-v1.23-0F766E?style=for-the-badge)](COURSE-INDEX.md)
+[![Updated](https://img.shields.io/badge/Updated-2026--03--19-1D4ED8?style=for-the-badge)](README.md)
+[![2_lessons](https://img.shields.io/badge/2__lessons-expanded-15803D?style=for-the-badge)](2_lessons/README.md)
 
 (c) Alex Krol
 
