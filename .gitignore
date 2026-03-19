@@ -5,4 +5,28 @@
 !.gitignore
 !README
 !README.md
+!CHANGELOG.md
 !L1-L10-matrix-simple.md
+
+# Keep lesson books and indexes
+!COURSE-INDEX.md
+!2_lessons/
+!2_lessons/*.md
+!2_lessons/codex-book/
+!2_lessons/codex-book/*.md
+!2_lessons/claude-code-book/
+!2_lessons/claude-code-book/*.md
+!2_lessons/playbooks/
+!2_lessons/playbooks/*.md
+
+# Keep framework memory docs
+!.claude/
+!.claude/SNAPSHOT.md
+!.claude/BACKLOG.md
+!.claude/ARCHITECTURE.md
+!.claude/ROADMAP.md
+!.claude/IDEAS.md
+!.claude/SESSION-HANDOFF.md
+
+# Always ignore local Finder artifacts
+.DS_Store

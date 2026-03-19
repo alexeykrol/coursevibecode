@@ -10,6 +10,16 @@
 [![Twitter](https://img.shields.io/badge/Twitter-Profile-1DA1F2?logo=twitter&logoColor=white)](https://twitter.com/old_alexeykrol)
 [![Website](https://img.shields.io/badge/Website-alexeykrol.com-111111?logo=google-chrome&logoColor=white)](https://alexeykrol.com/)
 
+## Быстрая навигация
+
+- [Индекс курса](COURSE-INDEX.md)
+- [Новая линия углубленных уроков](2_lessons/README.md)
+- [Книга по Codex: оглавление](2_lessons/codex-book/README.md)
+- [Книга по Codex: глава 1](2_lessons/codex-book/01-codex-first-contact.md)
+- [Книга по Claude Code: оглавление](2_lessons/claude-code-book/README.md)
+- [Книга по Claude Code: глава 1](2_lessons/claude-code-book/01-claude-code-first-contact.md)
+- [Прикладные playbooks](2_lessons/playbooks/README.md)
+
 
 Курс **не является решением**, он дает **навыки и знания**, с помощью которых клиенты строят свои решения. Цель курса - дать доступ к бесконечно б**о**льшим возможностям, далеко за пределами привычных чатов, научить действительно мощным инструментам и подходам.
 
