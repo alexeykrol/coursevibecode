@@ -64,7 +64,11 @@
 - [codex-agent-learning-path.md](2_lessons/codex-agent-learning-path.md) — конспект маршрута освоения Codex.
 - [claude-code-agent-learning-path.md](2_lessons/claude-code-agent-learning-path.md) — конспект маршрута освоения Claude Code.
 
-### 2.2. Книга по Codex
+### 2.2. Практический сравнительный гид
+
+- [codex-vs-claude-code-in-practice.md](2_lessons/codex-vs-claude-code-in-practice.md) — практический гид по выбору между Codex и Claude Code на реальных рабочих сценариях.
+
+### 2.3. Книга по Codex
 
 Папка: `2_lessons/codex-book`
 
@@ -89,7 +93,7 @@
 - текущая базовая линия книги по Codex завершена;
 - книга готова как самостоятельный маршрут чтения.
 
-### 2.3. Книга по Claude Code
+### 2.4. Книга по Claude Code
 
 Папка: `2_lessons/claude-code-book`
 
@@ -114,7 +118,7 @@
 - текущая базовая линия книги по Claude Code завершена;
 - книга готова как самостоятельный маршрут чтения.
 
-### 2.4. Прикладные playbooks
+### 2.5. Прикладные playbooks
 
 Папка: `2_lessons/playbooks`
 
@@ -130,10 +134,20 @@
 - [03-first-safe-edit.md](2_lessons/playbooks/03-first-safe-edit.md) — как сделать первую маленькую правку без лишнего риска.
 - [04-turn-outline-into-full-chapter.md](2_lessons/playbooks/04-turn-outline-into-full-chapter.md) — как превращать конспект в полноценную главу.
 - [05-regular-editorial-pass.md](2_lessons/playbooks/05-regular-editorial-pass.md) — как делать регулярный редакторский проход по уже написанным материалам.
+- [06-weekly-content-production-cycle.md](2_lessons/playbooks/06-weekly-content-production-cycle.md) — как выстроить недельный цикл производства контента с агентом.
+- [07-building-project-instructions.md](2_lessons/playbooks/07-building-project-instructions.md) — как собрать проектные инструкции, чтобы агент не забывал правила работы.
+- [08-safe-growth-of-autonomy.md](2_lessons/playbooks/08-safe-growth-of-autonomy.md) — как безопасно повышать автономность агента без потери контроля.
+- [09-agent-organization-for-small-team.md](2_lessons/playbooks/09-agent-organization-for-small-team.md) — как организовать работу маленькой команды с агентами без лишнего хаоса.
 
 Статус раздела:
 - стартовый набор playbooks собран;
-- следующий логичный шаг — добавлять более длинные operational scenarios и недельные циклы работы.
+- wave 2 начата и уже включает недельный производственный цикл;
+- wave 2 продолжена сценарием про сборку проектных инструкций;
+- wave 2 продолжена сценарием про безопасный рост автономности;
+- wave 2 завершена сценарием про организацию работы маленькой команды;
+- редакторский и терминологический проход по playbooks завершен;
+- добавлен отдельный практический гид сравнения `Codex vs Claude Code in practice`;
+- отдельный слой шаблонов и пакетов готовых запросов пока сознательно не добавляется, чтобы не раздувать структуру искусственно.
 
 ## Раздел 3. Справочные документы и матрицы
 
@@ -155,7 +169,8 @@
 5. Развернутая книга по Codex: [2_lessons/codex-book/README.md](2_lessons/codex-book/README.md)
 6. Развернутая книга по Claude Code: [2_lessons/claude-code-book/README.md](2_lessons/claude-code-book/README.md)
 7. Прикладные сценарии: [2_lessons/playbooks/README.md](2_lessons/playbooks/README.md)
-8. После этого можно сравнивать две среды и выбирать устойчивый рабочий набор под себя.
+8. Практический сравнительный гид: [2_lessons/codex-vs-claude-code-in-practice.md](2_lessons/codex-vs-claude-code-in-practice.md)
+9. После этого можно выбирать устойчивый рабочий набор под себя.
 
 ## Как будет расти структура дальше
 

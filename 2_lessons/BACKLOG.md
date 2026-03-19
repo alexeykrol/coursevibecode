@@ -13,23 +13,26 @@
 - [x] `codex-book` base line 01-09
 - [x] `claude-code-book` base line 01-09
 - [x] `playbooks` first wave 01-05
+- [x] `playbooks` second wave 06-09
 
 ## Current Active Track
 
 Current active track:
-- `2_lessons/playbooks`
+- `2_lessons` stabilized after books, playbooks, and comparative guide
 
 Nearest unfinished items:
-- [ ] `06-weekly-content-production-cycle.md`
-- [ ] `07-building-project-instructions.md`
-- [ ] `08-safe-growth-of-autonomy.md`
-- [ ] `09-agent-organization-for-small-team.md`
+- [x] decide whether to create `Codex vs Claude Code in practice`
+- [x] decide that the guide should live at the `2_lessons` root
+- [x] decide not to add reusable templates or prompt packs yet
+- [ ] re-check `01`-`05` only if the next real new artifact introduces terminology drift
+- [ ] decide what the next substantive expansion after `2_lessons` should be
 
 ## After Playbooks Wave 2
 
-- [ ] editorial pass across all playbooks
-- [ ] align playbooks with both books where wording diverges too much
-- [ ] decide whether to create a separate comparative guide `Codex vs Claude Code in practice`
+- [x] editorial pass across all playbooks
+- [x] align playbooks with both books where wording diverges too much for chapters `06`-`09`
+- [x] create a separate comparative guide `Codex vs Claude Code in practice`
+- [x] defer a separate templates/prompts layer until a real repeated need appears
 
 ## Working Rule
 

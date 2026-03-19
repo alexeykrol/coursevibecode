@@ -9,7 +9,7 @@ Its job is to restore the working contract quickly after a context reset or a ne
 
 - repo: `/Users/alexeykrolmini/Code/coursevibecode`
 - active section: `2_lessons`
-- active local track: `2_lessons/playbooks`
+- active local track: `2_lessons`
 - recommended branch for continuation: `codex/2-lessons-session-reset`
 
 ## What Is Already Complete
@@ -33,15 +33,43 @@ Completed:
 - `04-turn-outline-into-full-chapter.md`
 - `05-regular-editorial-pass.md`
 
-## Nearest Logical Resume Point
+### Playbooks Wave 2
 
-Resume from:
-- `2_lessons/playbooks/06-weekly-content-production-cycle.md`
-
-Then continue without pause through:
+Completed:
+- `06-weekly-content-production-cycle.md`
 - `07-building-project-instructions.md`
 - `08-safe-growth-of-autonomy.md`
 - `09-agent-organization-for-small-team.md`
+
+### Playbooks Editorial Pass
+
+Completed:
+- editorial and consistency pass across `01`-`09`
+
+### Playbooks Alignment Pass
+
+Completed:
+- terminology alignment between playbooks `06`-`09` and the matching chapters in both books
+
+### Comparative Guide
+
+Completed:
+- `2_lessons/codex-vs-claude-code-in-practice.md`
+
+### Templates / Prompt Packs Decision
+
+Completed:
+- separate reusable templates/prompts layer intentionally deferred for now
+
+## Nearest Logical Resume Point
+
+Resume from:
+- decision point: what the next substantive expansion after the stabilized `2_lessons` line should be
+
+Start with:
+- only revisit reusable templates/prompts if repeated patterns become clearly substantial
+- if a new real artifact is chosen, refresh indexes and handoff files
+- only after that re-check older playbooks if needed
 
 ## Quality Bar
 
@@ -67,7 +95,7 @@ Read in this order:
 7. `2_lessons/playbooks/README.md`
 
 After that:
-- resume the next unfinished playbook;
+- treat this as a structural fork and choose the next content artifact deliberately;
 - update indexes as needed;
 - do not ask intermediate questions.
 

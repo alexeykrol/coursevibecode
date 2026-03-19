@@ -26,10 +26,10 @@ Use this exact prompt in the next session if you open it inside `2_lessons/playb
 codex/2-lessons-session-reset
 
 Текущая точка продолжения:
-06-weekly-content-production-cycle.md
+возвращайся в эту папку только если здесь появится новый реальный артефакт или обнаружится wording drift
 
-После него продолжай без паузы:
-07-building-project-instructions.md
-08-safe-growth-of-autonomy.md
-09-agent-organization-for-small-team.md
+Сначала:
+1. не создавай новый слой здесь только ради продолжения;
+2. если появился новый реальный артефакт, создай его и обнови индексы;
+3. если нет, коротко зафиксируй стабильность папки и не создавай лишний файл.
 ```

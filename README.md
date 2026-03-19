@@ -14,6 +14,7 @@
 
 - [Индекс курса](COURSE-INDEX.md)
 - [Новая линия углубленных уроков](2_lessons/README.md)
+- [Практический гид: Codex vs Claude Code](2_lessons/codex-vs-claude-code-in-practice.md)
 - [Книга по Codex: оглавление](2_lessons/codex-book/README.md)
 - [Книга по Codex: глава 1](2_lessons/codex-book/01-codex-first-contact.md)
 - [Книга по Claude Code: оглавление](2_lessons/claude-code-book/README.md)
@@ -605,4 +606,3 @@
 - <a id="term-crm"></a>**CRM** — система для ведения клиентов, сделок и коммуникаций.
 - <a id="term-rag-kg"></a>**RAG/knowledge graph** — способы, которыми ИИ ищет знания в ваших документах.
 - <a id="term-backlog"></a>**Бэклог** — список задач, запланированных на следующие шаги.
-

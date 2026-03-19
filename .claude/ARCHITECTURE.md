@@ -30,6 +30,7 @@ coursevibecode/
 │   ├── NEXT-SESSION-PROMPT.md
 │   ├── codex-agent-learning-path.md
 │   ├── claude-code-agent-learning-path.md
+│   ├── codex-vs-claude-code-in-practice.md
 │   ├── codex-book/
 │   │   ├── AGENTS.md
 │   │   ├── BACKLOG.md
@@ -46,7 +47,7 @@ coursevibecode/
 │       ├── README.md
 │       ├── SESSION-HANDOFF.md
 │       ├── NEXT-SESSION-PROMPT.md
-│       └── 01-05 playbooks
+│       └── 01-09 playbooks
 ├── .claude/
 ├── .codex/
 └── src/framework-core/

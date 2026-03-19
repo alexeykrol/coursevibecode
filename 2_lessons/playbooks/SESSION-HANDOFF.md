@@ -21,16 +21,23 @@ Completed playbooks:
 - `03-first-safe-edit.md`
 - `04-turn-outline-into-full-chapter.md`
 - `05-regular-editorial-pass.md`
+- `06-weekly-content-production-cycle.md`
+- `07-building-project-instructions.md`
+- `08-safe-growth-of-autonomy.md`
+- `09-agent-organization-for-small-team.md`
+
+Completed pass:
+- editorial and consistency pass across the whole playbooks set
+- terminology alignment between playbooks `06`-`09` and the matching book chapters
 
 ## Resume Point
 
 Resume from:
-- `06-weekly-content-production-cycle.md`
+- only revisit this folder if a later real artifact is explicitly placed here or if wording drift appears
 
-Then continue through:
-- `07-building-project-instructions.md`
-- `08-safe-growth-of-autonomy.md`
-- `09-agent-organization-for-small-team.md`
+Start with:
+- keep this folder stable by default
+- do not force a new artifact here without a real repeated need
 
 ## Reading Order For Next Session
 

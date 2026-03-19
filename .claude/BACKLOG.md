@@ -5,15 +5,11 @@
 ## Active Sprint
 
 ### High Priority
-- [ ] Write `2_lessons/playbooks/06-weekly-content-production-cycle.md`
-- [ ] Write `2_lessons/playbooks/07-building-project-instructions.md`
-- [ ] Write `2_lessons/playbooks/08-safe-growth-of-autonomy.md`
-- [ ] Write `2_lessons/playbooks/09-agent-organization-for-small-team.md`
+- [ ] Decide what the next substantive expansion after the stabilized `2_lessons` line should be
 
 ### Medium Priority
-- [ ] Run an editorial pass across all playbooks after wave 2 is complete
-- [ ] Align wording between both books and the playbooks where terminology drifts too much
-- [ ] Decide whether to create a separate practical guide: `Codex vs Claude Code in practice`
+- [ ] Review whether playbooks `01`-`05` need another pass after the chapter-alignment work
+- [ ] Revisit a separate templates/prompts layer only if repeated patterns become substantial
 
 ### Low Priority
 - [ ] Review whether the root `AGENTS.md` should later be split more cleanly between framework orchestration and course authoring
@@ -28,8 +24,14 @@
 - [x] Completed `2_lessons/codex-book` chapters `01`-`09`
 - [x] Completed `2_lessons/claude-code-book` chapters `01`-`09`
 - [x] Completed playbooks wave 1: `01`-`05`
+- [x] Completed playbooks wave 2: `06`-`09`
+- [x] Completed editorial and consistency pass across playbooks `01`-`09`
+- [x] Completed terminology alignment between playbooks `06`-`09` and the matching book chapters
+- [x] Created `2_lessons/codex-vs-claude-code-in-practice.md`
+- [x] Decided not to add a separate templates/prompts layer yet
 - [x] Added section-level handoff and next-session files for `2_lessons` and `playbooks`
 - [x] Refreshed root framework memory files for the completion protocol
+- [x] Refreshed `2_lessons` and root indexes for the full playbooks set
 
 ## Notes
 
