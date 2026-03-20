@@ -32,6 +32,10 @@
 # Always ignore local Finder artifacts
 .DS_Store
 
+# Claude Code local permissions and local credential bundles must never be committed
+.claude/settings.local.json
+.production-credentials
+
 .env
 .env.*
 *credentials*
