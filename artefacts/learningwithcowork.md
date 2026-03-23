@@ -51,6 +51,9 @@
 4. скачать десктопное приложение Claude (включая CoWork) - и подключить его к аккаунту Claude
 5. Если это платный доступ типа Udemy, то взять подписку - это примерно 30$. Если какой-то б/п, то залогиниться и т.п.
 6. Создать папку на диске (имя вашей папки для курсов)
+7. Внутри папки создать подпапку .claude
+8. Создать в корне файл CLAUDE.md и положить в него содержимое файла [CLAUDE.md](https://github.com/alexeykrol/coursevibecode/blob/main/artefacts/CLAUDE.md)
+9. В папке .claude создать файл setting.json и положить в него содержимое файла [setting.json](https://github.com/alexeykrol/coursevibecode/blob/main/artefacts/CLAUDE.md)
 
 
 ## Создать файлы - см ниже и положить их в правильные места.
