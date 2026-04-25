@@ -40,3 +40,5 @@
 .claude/.session-owner
 .claude/logs/
 reports/
+.handoffs/local/
+.handoffs/*.local.md
