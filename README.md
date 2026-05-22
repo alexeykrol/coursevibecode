@@ -1,9 +1,9 @@
 # Бесплатный мини курс. Как внедрить ИИ в свою жизнь и кардинально изменить ее?
 Включая Vibe Coding для не программистов.
 
-[![Course Version](https://img.shields.io/badge/Course-v1.26-0F766E?style=for-the-badge)](COURSE-INDEX.md)
+[![Course Version](https://img.shields.io/badge/Course-v1.26-0F766E?style=for-the-badge)](courses/course-vibecode/2_lessons/README.md)
 [![Updated](https://img.shields.io/badge/Updated-2026--03--20-1D4ED8?style=for-the-badge)](README.md)
-[![2_lessons](https://img.shields.io/badge/2__lessons-expanded-15803D?style=for-the-badge)](2_lessons/README.md)
+[![2_lessons](https://img.shields.io/badge/2__lessons-expanded-15803D?style=for-the-badge)](courses/course-vibecode/2_lessons/README.md)
 
 (c) Alex Krol
 
@@ -14,22 +14,21 @@
 
 ## Быстрая навигация
 
-- [Индекс курса](COURSE-INDEX.md)
-- [Гид по иерархии AGENTS.md и config](codex-memory-and-settings-hierarchy.md)
-- [Гид по иерархии CLAUDE.md и settings](claude-code-memory-and-settings-hierarchy.md)
-- [Новая линия углубленных уроков](2_lessons/README.md)
-- [Практический гид: Codex vs Claude Code](2_lessons/codex-vs-claude-code-in-practice.md)
-- [Книга по Codex: оглавление](2_lessons/codex-book/README.md)
-- [Книга по Claude Code: оглавление](2_lessons/claude-code-book/README.md)
-- [Прикладные playbooks](2_lessons/playbooks/README.md)
+- [Гид по иерархии AGENTS.md и config](courses/course-vibecode/2_lessons/codex-book/10-codex-memory-and-settings-hierarchy.md)
+- [Гид по иерархии CLAUDE.md и settings](courses/course-vibecode/2_lessons/claude-code-book/10-claude-code-memory-and-settings-hierarchy.md)
+- [Новая линия углубленных уроков](courses/course-vibecode/2_lessons/README.md)
+- [Практический гид: Codex vs Claude Code](courses/course-vibecode/2_lessons/codex-vs-claude-code-in-practice.md)
+- [Книга по Codex: оглавление](courses/course-vibecode/2_lessons/codex-book/README.md)
+- [Книга по Claude Code: оглавление](courses/course-vibecode/2_lessons/claude-code-book/README.md)
+- [Прикладные playbooks](courses/course-vibecode/2_lessons/playbooks/README.md)
 
 ## Что сейчас главное в репозитории
 
 Если вам нужен не весь архив курса, а актуальная рабочая линия, смотрите в первую очередь сюда:
 
-- [Новая линия углубленных уроков](2_lessons/README.md)
-- [Практический гид: Codex vs Claude Code](2_lessons/codex-vs-claude-code-in-practice.md)
-- [Прикладные playbooks](2_lessons/playbooks/README.md)
+- [Новая линия углубленных уроков](courses/course-vibecode/2_lessons/README.md)
+- [Практический гид: Codex vs Claude Code](courses/course-vibecode/2_lessons/codex-vs-claude-code-in-practice.md)
+- [Прикладные playbooks](courses/course-vibecode/2_lessons/playbooks/README.md)
 
 Сейчас в этой линии уже есть:
 - полная книга по Codex;
@@ -39,7 +38,7 @@
 - девять прикладных playbooks для нетехнической аудитории.
 
 Если вы входите в тему впервые, самый короткий маршрут такой:
-1. откройте [2_lessons/README.md](2_lessons/README.md);
+1. откройте [2_lessons/README.md](courses/course-vibecode/2_lessons/README.md);
 2. выберите одну из двух книг;
 3. пройдите несколько playbooks;
 4. потом откройте практический сравнительный гид и выберите устойчивую рабочую среду под себя.

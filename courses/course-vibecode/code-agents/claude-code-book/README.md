@@ -26,7 +26,7 @@
 
 - [Конспект маршрута освоения Claude Code](../root_docs/claude-code-agent-learning-path.md)
 - [Отдельный практический guide по интерфейсам Claude Code](../root_docs/claude_code_interfaces.md)
-- [Индекс репозитория essays](../../README.md)
+- [Индекс репозитория code-agents](../README.md)
 
 ## Текущий статус
 

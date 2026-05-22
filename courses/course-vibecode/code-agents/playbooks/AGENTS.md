@@ -20,7 +20,7 @@ Each playbook should help the reader complete one real scenario without needing 
 
 This repository does not use a section-level `2_lessons` layer anymore.
 For work inside `education/playbooks`, this local file is the primary authoring layer.
-Use the repository root [README.md](../../README.md) and [ROADMAP.md](../../autonomy/root_docs/ROADMAP.md) as the upper repo context.
+Use the repository root [README.md](../README.md) as the upper repo context. (ROADMAP.md lives in the external `essays` repo and is not part of this repository.)
 
 ## Writing Rules
 

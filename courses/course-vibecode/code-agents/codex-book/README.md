@@ -26,7 +26,7 @@
 
 - [Конспект маршрута освоения Codex](../root_docs/codex-agent-learning-path.md)
 - [Отдельный практический guide по иерархии настроек и памяти Codex](../root_docs/codex-memory-and-settings-hierarchy.md)
-- [Индекс репозитория essays](../../README.md)
+- [Индекс репозитория code-agents](../README.md)
 
 ## Текущий статус
 

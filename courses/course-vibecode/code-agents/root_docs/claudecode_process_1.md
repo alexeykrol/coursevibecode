@@ -2100,8 +2100,6 @@ However, here's what I'd suggest:
 
 What works best for you?
 
-![be657c4eb7e451c7c4ff747920f65f6c39efb120.heic](../../%D0%9A%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D1%8C%D0%BE%D0%BD%20%D0%B8%20%D0%B0%D0%B2%D1%82%D0%BE%D0%BD%D0%BE%D0%BC%D0%B8%D1%8F%20-%20Claude_files/preview.webp)
-
 you have)))
 
 Feb 27
@@ -5025,8 +5023,6 @@ Sonnet 4.6
 Share
 
 ### Content
-
-![be657c4eb7e451c7c4ff747920f65f6c39efb120.heic](../../%D0%9A%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D1%8C%D0%BE%D0%BD%20%D0%B8%20%D0%B0%D0%B2%D1%82%D0%BE%D0%BD%D0%BE%D0%BC%D0%B8%D1%8F%20-%20Claude_files/preview.webp)
 
 ### create\_design\_system\_rules\_text
 

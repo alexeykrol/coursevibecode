@@ -426,7 +426,7 @@ CLI flags или `--config`, а не переписывание всей арх�
 
 Для более подробной карты всех уровней смотрите отдельный документ:
 
-- [codex-memory-and-settings-hierarchy.md](../../codex-memory-and-settings-hierarchy.md)
+- [codex-memory-and-settings-hierarchy.md](../../code-agents/root_docs/codex-memory-and-settings-hierarchy.md)
 
 ## 11. Официальные источники
 

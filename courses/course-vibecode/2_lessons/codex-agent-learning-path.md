@@ -42,16 +42,18 @@
 
 **2. Локальные методологические материалы**
 
-Они лежат в папке `/Users/alexeykrolmini/Code/essays` и дают более глубокую рамку:
-- [agent_operating_system.md](/Users/alexeykrolmini/Code/essays/agent_operating_system.md)
-- [agent_organization.md](/Users/alexeykrolmini/Code/essays/agent_organization.md)
-- [agent_organization_design.md](/Users/alexeykrolmini/Code/essays/agent_organization_design.md)
-- [agent_organization_self_learning.md](/Users/alexeykrolmini/Code/essays/agent_organization_self_learning.md)
-- [agent_org_tz_core.md](/Users/alexeykrolmini/Code/essays/agent_org_tz_core.md)
-- [agent_org_tz_codex.md](/Users/alexeykrolmini/Code/essays/agent_org_tz_codex.md)
-- [codex_process_1.md](/Users/alexeykrolmini/Code/essays/codex_process_1.md)
-- [codex_managment.md](/Users/alexeykrolmini/Code/essays/codex_managment.md)
-- [claudecode_vs_codex.md](/Users/alexeykrolmini/Code/essays/claudecode_vs_codex.md)
+Локальные копии (из репозитория `code-agents/root_docs`):
+- [codex_process_1.md](../code-agents/root_docs/codex_process_1.md)
+- [codex_managment.md](../code-agents/root_docs/codex_managment.md)
+- [claudecode_vs_codex.md](../code-agents/root_docs/claudecode_vs_codex.md)
+
+Внешние материалы (в отдельном архиве `essays`, не в этом репозитории):
+- `agent_operating_system.md`
+- `agent_organization.md`
+- `agent_organization_design.md`
+- `agent_organization_self_learning.md`
+- `agent_org_tz_core.md`
+- `agent_org_tz_codex.md`
 
 Из этих текстов взята важная мысль: зрелая работа с агентом идет по ступеням.
 Обычно путь такой:
