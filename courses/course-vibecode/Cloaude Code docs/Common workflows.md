@@ -6,7 +6,7 @@
 
 > Step-by-step guides for exploring codebases, fixing bugs, refactoring, testing, and other everyday tasks with Claude Code.
 
-This page covers practical workflows for everyday development: exploring unfamiliar code, debugging, refactoring, writing tests, creating PRs, and managing sessions. Each section includes example prompts you can adapt to your own projects. For higher-level patterns and tips, see [Best practices](/en/best-practices).
+This page covers practical workflows for everyday development: exploring unfamiliar code, debugging, refactoring, writing tests, creating PRs, and managing sessions. Each section includes example prompts you can adapt to your own projects. For higher-level patterns and tips, see [Best practices](https://docs.anthropic.com/en/best-practices).
 
 ## Understand new codebases
 
@@ -85,7 +85,7 @@ Suppose you need to locate code related to a specific feature or functionality.
 
   * Be specific about what you're looking for
   * Use domain language from the project
-  * Install a [code intelligence plugin](/en/discover-plugins#code-intelligence) for your language to give Claude precise "go to definition" and "find references" navigation
+  * Install a [code intelligence plugin](https://docs.anthropic.com/en/discover-plugins#code-intelligence) for your language to give Claude precise "go to definition" and "find references" navigation
 </Tip>
 
 ***
@@ -219,14 +219,14 @@ Suppose you want to use specialized AI subagents to handle specific tasks more e
   * Create project-specific subagents in `.claude/agents/` for team sharing
   * Use descriptive `description` fields to enable automatic delegation
   * Limit tool access to what each subagent actually needs
-  * Check the [subagents documentation](/en/sub-agents) for detailed examples
+  * Check the [subagents documentation](https://docs.anthropic.com/en/sub-agents) for detailed examples
 </Tip>
 
 ***
 
 ## Use Plan Mode for safe code analysis
 
-Plan Mode instructs Claude to create a plan by analyzing the codebase with read-only operations, perfect for exploring codebases, planning complex changes, or reviewing code safely. In Plan Mode, Claude uses [`AskUserQuestion`](/en/settings#tools-available-to-claude) to gather requirements and clarify your goals before proposing a plan.
+Plan Mode instructs Claude to create a plan by analyzing the codebase with read-only operations, perfect for exploring codebases, planning complex changes, or reviewing code safely. In Plan Mode, Claude uses [`AskUserQuestion`](https://docs.anthropic.com/en/settings#tools-available-to-claude) to gather requirements and clarify your goals before proposing a plan.
 
 ### When to use Plan Mode
 
@@ -252,7 +252,7 @@ claude --permission-mode plan
 
 **Run "headless" queries in Plan Mode**
 
-You can also run a query in Plan Mode directly with `-p` (that is, in ["headless mode"](/en/headless)):
+You can also run a query in Plan Mode directly with `-p` (that is, in ["headless mode"](https://docs.anthropic.com/en/headless)):
 
 ```bash  theme={null}
 claude --permission-mode plan -p "Analyze the authentication system and suggest improvements"
@@ -291,7 +291,7 @@ How should we handle database migration?
 }
 ```
 
-See [settings documentation](/en/settings#available-settings) for more configuration options.
+See [settings documentation](https://docs.anthropic.com/en/settings#available-settings) for more configuration options.
 
 ***
 
@@ -487,7 +487,7 @@ Use @ to quickly include files or directories without waiting for Claude to read
     Show me the data from @github:repos/owner/repo/issues
     ```
 
-    This fetches data from connected MCP servers using the format @server:resource. See [MCP resources](/en/mcp#use-mcp-resources) for details.
+    This fetches data from connected MCP servers using the format @server:resource. See [MCP resources](https://docs.anthropic.com/en/mcp#use-mcp-resources) for details.
   </Step>
 </Steps>
 
@@ -506,7 +506,7 @@ Use @ to quickly include files or directories without waiting for Claude to read
 
 [Extended thinking](https://platform.claude.com/docs/en/build-with-claude/extended-thinking) is enabled by default, giving Claude space to reason through complex problems step-by-step before responding. This reasoning is visible in verbose mode, which you can toggle on with `Ctrl+O`.
 
-Additionally, Opus 4.6 introduces adaptive reasoning: instead of a fixed thinking token budget, the model dynamically allocates thinking based on your [effort level](/en/model-config#adjust-effort-level) setting. Extended thinking and adaptive reasoning work together to give you control over how deeply Claude reasons before responding.
+Additionally, Opus 4.6 introduces adaptive reasoning: instead of a fixed thinking token budget, the model dynamically allocates thinking based on your [effort level](https://docs.anthropic.com/en/model-config#adjust-effort-level) setting. Extended thinking and adaptive reasoning work together to give you control over how deeply Claude reasons before responding.
 
 Extended thinking is particularly valuable for complex architectural decisions, challenging bugs, multi-step implementation planning, and evaluating tradeoffs between different approaches.
 
@@ -520,11 +520,11 @@ Thinking is enabled by default, but you can adjust or disable it.
 
 | Scope                    | How to configure                                                                           | Details                                                                                                                                                          |
 | ------------------------ | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Effort level**         | Adjust in `/model` or set [`CLAUDE_CODE_EFFORT_LEVEL`](/en/settings#environment-variables) | Control thinking depth for Opus 4.6 and Sonnet 4.6: low, medium, high. See [Adjust effort level](/en/model-config#adjust-effort-level)                           |
+| **Effort level**         | Adjust in `/model` or set [`CLAUDE_CODE_EFFORT_LEVEL`](https://docs.anthropic.com/en/settings#environment-variables) | Control thinking depth for Opus 4.6 and Sonnet 4.6: low, medium, high. See [Adjust effort level](https://docs.anthropic.com/en/model-config#adjust-effort-level)                           |
 | **`ultrathink` keyword** | Include "ultrathink" anywhere in your prompt                                               | Sets effort to high for that turn on Opus 4.6 and Sonnet 4.6. Useful for one-off tasks requiring deep reasoning without permanently changing your effort setting |
-| **Toggle shortcut**      | Press `Option+T` (macOS) or `Alt+T` (Windows/Linux)                                        | Toggle thinking on/off for the current session (all models). May require [terminal configuration](/en/terminal-config) to enable Option key shortcuts            |
+| **Toggle shortcut**      | Press `Option+T` (macOS) or `Alt+T` (Windows/Linux)                                        | Toggle thinking on/off for the current session (all models). May require [terminal configuration](https://docs.anthropic.com/en/terminal-config) to enable Option key shortcuts            |
 | **Global default**       | Use `/config` to toggle thinking mode                                                      | Sets your default across all projects (all models).<br />Saved as `alwaysThinkingEnabled` in `~/.claude/settings.json`                                           |
-| **Limit token budget**   | Set [`MAX_THINKING_TOKENS`](/en/settings#environment-variables) environment variable       | Limit the thinking budget to a specific number of tokens (ignored on Opus 4.6 unless set to 0). Example: `export MAX_THINKING_TOKENS=10000`                      |
+| **Limit token budget**   | Set [`MAX_THINKING_TOKENS`](https://docs.anthropic.com/en/settings#environment-variables) environment variable       | Limit the thinking budget to a specific number of tokens (ignored on Opus 4.6 unless set to 0). Example: `export MAX_THINKING_TOKENS=10000`                      |
 
 To view Claude's thinking process, press `Ctrl+O` to toggle verbose mode and see the internal reasoning displayed as gray italic text.
 
@@ -532,11 +532,11 @@ To view Claude's thinking process, press `Ctrl+O` to toggle verbose mode and see
 
 Extended thinking controls how much internal reasoning Claude performs before responding. More thinking provides more space to explore solutions, analyze edge cases, and self-correct mistakes.
 
-**With Opus 4.6**, thinking uses adaptive reasoning: the model dynamically allocates thinking tokens based on the [effort level](/en/model-config#adjust-effort-level) you select (low, medium, high). This is the recommended way to tune the tradeoff between speed and reasoning depth.
+**With Opus 4.6**, thinking uses adaptive reasoning: the model dynamically allocates thinking tokens based on the [effort level](https://docs.anthropic.com/en/model-config#adjust-effort-level) you select (low, medium, high). This is the recommended way to tune the tradeoff between speed and reasoning depth.
 
-**With other models**, thinking uses a fixed budget of up to 31,999 tokens from your output budget. You can limit this with the [`MAX_THINKING_TOKENS`](/en/settings#environment-variables) environment variable, or disable thinking entirely via `/config` or the `Option+T`/`Alt+T` toggle.
+**With other models**, thinking uses a fixed budget of up to 31,999 tokens from your output budget. You can limit this with the [`MAX_THINKING_TOKENS`](https://docs.anthropic.com/en/settings#environment-variables) environment variable, or disable thinking entirely via `/config` or the `Option+T`/`Alt+T` toggle.
 
-`MAX_THINKING_TOKENS` is ignored on Opus 4.6 and Sonnet 4.6, since adaptive reasoning controls thinking depth instead. The one exception: setting `MAX_THINKING_TOKENS=0` still disables thinking entirely on any model. To disable adaptive thinking and revert to the fixed thinking budget, set `CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1`. See [environment variables](/en/settings#environment-variables).
+`MAX_THINKING_TOKENS` is ignored on Opus 4.6 and Sonnet 4.6, since adaptive reasoning controls thinking depth instead. The one exception: setting `MAX_THINKING_TOKENS=0` still disables thinking entirely on any model. To disable adaptive thinking and revert to the fixed thinking budget, set `CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1`. See [environment variables](https://docs.anthropic.com/en/settings#environment-variables).
 
 <Warning>
   You're charged for all thinking tokens used, even though Claude 4 models show summarized thinking
@@ -664,7 +664,7 @@ You can also ask Claude to "work in a worktree" or "start a worktree" during a s
 
 ### Subagent worktrees
 
-Subagents can also use worktree isolation to work in parallel without conflicts. Ask Claude to "use worktrees for your agents" or configure it in a [custom subagent](/en/sub-agents#supported-frontmatter-fields) by adding `isolation: worktree` to the agent's frontmatter. Each subagent gets its own worktree that is automatically cleaned up when the subagent finishes without changes.
+Subagents can also use worktree isolation to work in parallel without conflicts. Ask Claude to "use worktrees for your agents" or configure it in a [custom subagent](https://docs.anthropic.com/en/sub-agents#supported-frontmatter-fields) by adding `isolation: worktree` to the agent's frontmatter. Each subagent gets its own worktree that is automatically cleaned up when the subagent finishes without changes.
 
 ### Worktree cleanup
 
@@ -706,15 +706,15 @@ Learn more in the [official Git worktree documentation](https://git-scm.com/docs
 
 ### Non-git version control
 
-Worktree isolation works with git by default. For other version control systems like SVN, Perforce, or Mercurial, configure [WorktreeCreate and WorktreeRemove hooks](/en/hooks#worktreecreate) to provide custom worktree creation and cleanup logic. When configured, these hooks replace the default git behavior when you use `--worktree`.
+Worktree isolation works with git by default. For other version control systems like SVN, Perforce, or Mercurial, configure [WorktreeCreate and WorktreeRemove hooks](https://docs.anthropic.com/en/hooks#worktreecreate) to provide custom worktree creation and cleanup logic. When configured, these hooks replace the default git behavior when you use `--worktree`.
 
-For automated coordination of parallel sessions with shared tasks and messaging, see [agent teams](/en/agent-teams).
+For automated coordination of parallel sessions with shared tasks and messaging, see [agent teams](https://docs.anthropic.com/en/agent-teams).
 
 ***
 
 ## Get notified when Claude needs your attention
 
-When you kick off a long-running task and switch to another window, you can set up desktop notifications so you know when Claude finishes or needs your input. This uses the `Notification` [hook event](/en/hooks-guide#get-notified-when-claude-needs-input), which fires whenever Claude is waiting for permission, idle and ready for a new prompt, or completing authentication.
+When you kick off a long-running task and switch to another window, you can set up desktop notifications so you know when Claude finishes or needs your input. This uses the `Notification` [hook event](https://docs.anthropic.com/en/hooks-guide#get-notified-when-claude-needs-input), which fires whenever Claude is waiting for permission, idle and ready for a new prompt, or completing authentication.
 
 <Steps>
   <Step title="Open the hooks menu">
@@ -767,7 +767,7 @@ When you kick off a long-running task and switch to another window, you can set 
   </Step>
 </Steps>
 
-For the full walkthrough with JSON configuration examples, see [Automate workflows with hooks](/en/hooks-guide#get-notified-when-claude-needs-input). For the complete event schema and notification types, see the [Notification reference](/en/hooks#notification).
+For the full walkthrough with JSON configuration examples, see [Automate workflows with hooks](https://docs.anthropic.com/en/hooks-guide#get-notified-when-claude-needs-input). For the complete event schema and notification types, see the [Notification reference](https://docs.anthropic.com/en/hooks#notification).
 
 ***
 

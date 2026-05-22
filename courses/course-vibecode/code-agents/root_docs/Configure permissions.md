@@ -32,7 +32,7 @@ Rules are evaluated in order: **deny -> ask -> allow**. The first matching rule 
 
 ## Permission modes
 
-Claude Code supports several permission modes that control how tools are approved. Set the `defaultMode` in your [settings files](/en/settings#settings-files):
+Claude Code supports several permission modes that control how tools are approved. Set the `defaultMode` in your [settings files](https://docs.anthropic.com/en/settings#settings-files):
 
 | Mode                | Description                                                                           |
 | :------------------ | :------------------------------------------------------------------------------------ |
@@ -171,7 +171,7 @@ Examples:
 
 ### Agent (subagents)
 
-Use `Agent(AgentName)` rules to control which [subagents](/en/sub-agents) Claude can use:
+Use `Agent(AgentName)` rules to control which [subagents](https://docs.anthropic.com/en/sub-agents) Claude can use:
 
 * `Agent(Explore)` matches the Explore subagent
 * `Agent(Plan)` matches the Plan subagent
@@ -189,7 +189,7 @@ Add these rules to the `deny` array in your settings or use the `--disallowedToo
 
 ## Extend permissions with hooks
 
-[Claude Code hooks](/en/hooks-guide) provide a way to register custom shell commands to perform permission evaluation at runtime. When Claude Code makes a tool call, PreToolUse hooks run before the permission system, and the hook output can determine whether to approve or deny the tool call in place of the permission system.
+[Claude Code hooks](https://docs.anthropic.com/en/hooks-guide) provide a way to register custom shell commands to perform permission evaluation at runtime. When Claude Code makes a tool call, PreToolUse hooks run before the permission system, and the hook output can determine whether to approve or deny the tool call in place of the permission system.
 
 ## Working directories
 
@@ -197,13 +197,13 @@ By default, Claude has access to files in the directory where it was launched. Y
 
 * **During startup**: use `--add-dir <path>` CLI argument
 * **During session**: use `/add-dir` command
-* **Persistent configuration**: add to `additionalDirectories` in [settings files](/en/settings#settings-files)
+* **Persistent configuration**: add to `additionalDirectories` in [settings files](https://docs.anthropic.com/en/settings#settings-files)
 
 Files in additional directories follow the same permission rules as the original working directory: they become readable without prompts, and file editing permissions follow the current permission mode.
 
 ## How permissions interact with sandboxing
 
-Permissions and [sandboxing](/en/sandboxing) are complementary security layers:
+Permissions and [sandboxing](https://docs.anthropic.com/en/sandboxing) are complementary security layers:
 
 * **Permissions** control which tools Claude Code can use and which files or domains it can access. They apply to all tools (Bash, Read, Edit, WebFetch, MCP, and others).
 * **Sandboxing** provides OS-level enforcement that restricts the Bash tool's filesystem and network access. It applies only to Bash commands and their child processes.
@@ -217,7 +217,7 @@ Use both for defense-in-depth:
 
 ## Managed settings
 
-For organizations that need centralized control over Claude Code configuration, administrators can deploy managed settings that cannot be overridden by user or project settings. These policy settings follow the same format as regular settings files and can be delivered through MDM/OS-level policies, managed settings files, or [server-managed settings](/en/server-managed-settings). See [settings files](/en/settings#settings-files) for delivery mechanisms and file locations.
+For organizations that need centralized control over Claude Code configuration, administrators can deploy managed settings that cannot be overridden by user or project settings. These policy settings follow the same format as regular settings files and can be delivered through MDM/OS-level policies, managed settings files, or [server-managed settings](https://docs.anthropic.com/en/server-managed-settings). See [settings files](https://docs.anthropic.com/en/settings#settings-files) for delivery mechanisms and file locations.
 
 ### Managed-only settings
 
@@ -228,15 +228,15 @@ Some settings are only effective in managed settings:
 | `disableBypassPermissionsMode`            | Set to `"disable"` to prevent `bypassPermissions` mode and the `--dangerously-skip-permissions` flag                                                                                                                                 |
 | `allowManagedPermissionRulesOnly`         | When `true`, prevents user and project settings from defining `allow`, `ask`, or `deny` permission rules. Only rules in managed settings apply                                                                                       |
 | `allowManagedHooksOnly`                   | When `true`, prevents loading of user, project, and plugin hooks. Only managed hooks and SDK hooks are allowed                                                                                                                       |
-| `allowManagedMcpServersOnly`              | When `true`, only `allowedMcpServers` from managed settings are respected. `deniedMcpServers` still merges from all sources. See [Managed MCP configuration](/en/mcp#managed-mcp-configuration)                                      |
-| `blockedMarketplaces`                     | Blocklist of marketplace sources. Blocked sources are checked before downloading, so they never touch the filesystem. See [managed marketplace restrictions](/en/plugin-marketplaces#managed-marketplace-restrictions)               |
+| `allowManagedMcpServersOnly`              | When `true`, only `allowedMcpServers` from managed settings are respected. `deniedMcpServers` still merges from all sources. See [Managed MCP configuration](https://docs.anthropic.com/en/mcp#managed-mcp-configuration)                                      |
+| `blockedMarketplaces`                     | Blocklist of marketplace sources. Blocked sources are checked before downloading, so they never touch the filesystem. See [managed marketplace restrictions](https://docs.anthropic.com/en/plugin-marketplaces#managed-marketplace-restrictions)               |
 | `sandbox.network.allowManagedDomainsOnly` | When `true`, only `allowedDomains` and `WebFetch(domain:...)` allow rules from managed settings are respected. Non-allowed domains are blocked automatically without prompting the user. Denied domains still merge from all sources |
-| `strictKnownMarketplaces`                 | Controls which plugin marketplaces users can add. See [managed marketplace restrictions](/en/plugin-marketplaces#managed-marketplace-restrictions)                                                                                   |
-| `allow_remote_sessions`                   | When `true`, allows users to start [Remote Control](/en/remote-control) and [web sessions](/en/claude-code-on-the-web). Defaults to `true`. Set to `false` to prevent remote session access                                          |
+| `strictKnownMarketplaces`                 | Controls which plugin marketplaces users can add. See [managed marketplace restrictions](https://docs.anthropic.com/en/plugin-marketplaces#managed-marketplace-restrictions)                                                                                   |
+| `allow_remote_sessions`                   | When `true`, allows users to start [Remote Control](https://docs.anthropic.com/en/remote-control) and [web sessions](https://docs.anthropic.com/en/claude-code-on-the-web). Defaults to `true`. Set to `false` to prevent remote session access                                          |
 
 ## Settings precedence
 
-Permission rules follow the same [settings precedence](/en/settings#settings-precedence) as all other Claude Code settings:
+Permission rules follow the same [settings precedence](https://docs.anthropic.com/en/settings#settings-precedence) as all other Claude Code settings:
 
 1. **Managed settings**: cannot be overridden by any other level, including command line arguments
 2. **Command line arguments**: temporary session overrides
@@ -254,8 +254,8 @@ This [repository](https://github.com/anthropics/claude-code/tree/main/examples/s
 
 ## See also
 
-* [Settings](/en/settings): complete configuration reference including the permission settings table
-* [Sandboxing](/en/sandboxing): OS-level filesystem and network isolation for Bash commands
-* [Authentication](/en/authentication): set up user access to Claude Code
-* [Security](/en/security): security safeguards and best practices
-* [Hooks](/en/hooks-guide): automate workflows and extend permission evaluation
+* [Settings](https://docs.anthropic.com/en/settings): complete configuration reference including the permission settings table
+* [Sandboxing](https://docs.anthropic.com/en/sandboxing): OS-level filesystem and network isolation for Bash commands
+* [Authentication](https://docs.anthropic.com/en/authentication): set up user access to Claude Code
+* [Security](https://docs.anthropic.com/en/security): security safeguards and best practices
+* [Hooks](https://docs.anthropic.com/en/hooks-guide): automate workflows and extend permission evaluation

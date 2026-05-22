@@ -10,7 +10,7 @@ Claude Code is an AI-powered coding assistant that helps you build features, fix
 
 ## Get started
 
-Choose your environment to get started. Most surfaces require a [Claude subscription](https://claude.com/pricing) or [Anthropic Console](https://console.anthropic.com/) account. The Terminal CLI and VS Code also support [third-party providers](/en/third-party-integrations).
+Choose your environment to get started. Most surfaces require a [Claude subscription](https://claude.com/pricing) or [Anthropic Console](https://console.anthropic.com/) account. The Terminal CLI and VS Code also support [third-party providers](https://docs.anthropic.com/en/third-party-integrations).
 
 <Tabs>
   <Tab title="Terminal">
@@ -73,10 +73,10 @@ Choose your environment to get started. Most surfaces require a [Claude subscrip
     claude
     ```
 
-    You'll be prompted to log in on first use. That's it! [Continue with the Quickstart →](/en/quickstart)
+    You'll be prompted to log in on first use. That's it! [Continue with the Quickstart →](https://docs.anthropic.com/en/quickstart)
 
     <Tip>
-      See [advanced setup](/en/setup) for installation options, manual updates, or uninstallation instructions. Visit [troubleshooting](/en/troubleshooting) if you hit issues.
+      See [advanced setup](https://docs.anthropic.com/en/setup) for installation options, manual updates, or uninstallation instructions. Visit [troubleshooting](https://docs.anthropic.com/en/troubleshooting) if you hit issues.
     </Tip>
   </Tab>
 
@@ -88,7 +88,7 @@ Choose your environment to get started. Most surfaces require a [Claude subscrip
 
     Or search for "Claude Code" in the Extensions view (`Cmd+Shift+X` on Mac, `Ctrl+Shift+X` on Windows/Linux). After installing, open the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`), type "Claude Code", and select **Open in New Tab**.
 
-    [Get started with VS Code →](/en/vs-code#get-started)
+    [Get started with VS Code →](https://docs.anthropic.com/en/vs-code#get-started)
   </Tab>
 
   <Tab title="Desktop app">
@@ -102,7 +102,7 @@ Choose your environment to get started. Most surfaces require a [Claude subscrip
 
     After installing, launch Claude, sign in, and click the **Code** tab to start coding. A [paid subscription](https://claude.com/pricing) is required.
 
-    [Learn more about the desktop app →](/en/desktop-quickstart)
+    [Learn more about the desktop app →](https://docs.anthropic.com/en/desktop-quickstart)
   </Tab>
 
   <Tab title="Web">
@@ -110,7 +110,7 @@ Choose your environment to get started. Most surfaces require a [Claude subscrip
 
     Start coding at [claude.ai/code](https://claude.ai/code).
 
-    [Get started on the web →](/en/claude-code-on-the-web#getting-started)
+    [Get started on the web →](https://docs.anthropic.com/en/claude-code-on-the-web#getting-started)
   </Tab>
 
   <Tab title="JetBrains">
@@ -118,7 +118,7 @@ Choose your environment to get started. Most surfaces require a [Claude subscrip
 
     Install the [Claude Code plugin](https://plugins.jetbrains.com/plugin/27310-claude-code-beta-) from the JetBrains Marketplace and restart your IDE.
 
-    [Get started with JetBrains →](/en/jetbrains)
+    [Get started with JetBrains →](https://docs.anthropic.com/en/jetbrains)
   </Tab>
 </Tabs>
 
@@ -138,7 +138,7 @@ Here are some of the ways you can use Claude Code:
   <Accordion title="Build features and fix bugs" icon="hammer">
     Describe what you want in plain language. Claude Code plans the approach, writes the code across multiple files, and verifies it works.
 
-    For bugs, paste an error message or describe the symptom. Claude Code traces the issue through your codebase, identifies the root cause, and implements a fix. See [common workflows](/en/common-workflows) for more examples.
+    For bugs, paste an error message or describe the symptom. Claude Code traces the issue through your codebase, identifies the root cause, and implements a fix. See [common workflows](https://docs.anthropic.com/en/common-workflows) for more examples.
   </Accordion>
 
   <Accordion title="Create commits and pull requests" icon="code-branch">
@@ -148,23 +148,23 @@ Here are some of the ways you can use Claude Code:
     claude "commit my changes with a descriptive message"
     ```
 
-    In CI, you can automate code review and issue triage with [GitHub Actions](/en/github-actions) or [GitLab CI/CD](/en/gitlab-ci-cd).
+    In CI, you can automate code review and issue triage with [GitHub Actions](https://docs.anthropic.com/en/github-actions) or [GitLab CI/CD](https://docs.anthropic.com/en/gitlab-ci-cd).
   </Accordion>
 
   <Accordion title="Connect your tools with MCP" icon="plug">
-    The [Model Context Protocol (MCP)](/en/mcp) is an open standard for connecting AI tools to external data sources. With MCP, Claude Code can read your design docs in Google Drive, update tickets in Jira, pull data from Slack, or use your own custom tooling.
+    The [Model Context Protocol (MCP)](https://docs.anthropic.com/en/mcp) is an open standard for connecting AI tools to external data sources. With MCP, Claude Code can read your design docs in Google Drive, update tickets in Jira, pull data from Slack, or use your own custom tooling.
   </Accordion>
 
   <Accordion title="Customize with instructions, skills, and hooks" icon="sliders">
-    [`CLAUDE.md`](/en/memory) is a markdown file you add to your project root that Claude Code reads at the start of every session. Use it to set coding standards, architecture decisions, preferred libraries, and review checklists. Claude also builds [auto memory](/en/memory#auto-memory) as it works, saving learnings like build commands and debugging insights across sessions without you writing anything.
+    [`CLAUDE.md`](https://docs.anthropic.com/en/memory) is a markdown file you add to your project root that Claude Code reads at the start of every session. Use it to set coding standards, architecture decisions, preferred libraries, and review checklists. Claude also builds [auto memory](https://docs.anthropic.com/en/memory#auto-memory) as it works, saving learnings like build commands and debugging insights across sessions without you writing anything.
 
-    Create [custom commands](/en/skills) to package repeatable workflows your team can share, like `/review-pr` or `/deploy-staging`.
+    Create [custom commands](https://docs.anthropic.com/en/skills) to package repeatable workflows your team can share, like `/review-pr` or `/deploy-staging`.
 
-    [Hooks](/en/hooks) let you run shell commands before or after Claude Code actions, like auto-formatting after every file edit or running lint before a commit.
+    [Hooks](https://docs.anthropic.com/en/hooks) let you run shell commands before or after Claude Code actions, like auto-formatting after every file edit or running lint before a commit.
   </Accordion>
 
   <Accordion title="Run agent teams and build custom agents" icon="users">
-    Spawn [multiple Claude Code agents](/en/sub-agents) that work on different parts of a task simultaneously. A lead agent coordinates the work, assigns subtasks, and merges results.
+    Spawn [multiple Claude Code agents](https://docs.anthropic.com/en/sub-agents) that work on different parts of a task simultaneously. A lead agent coordinates the work, assigns subtasks, and merges results.
 
     For fully custom workflows, the [Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) lets you build your own agents powered by Claude Code's tools and capabilities, with full control over orchestration, tool access, and permissions.
   </Accordion>
@@ -183,16 +183,16 @@ Here are some of the ways you can use Claude Code:
     git diff main --name-only | claude -p "review these changed files for security issues"
     ```
 
-    See the [CLI reference](/en/cli-reference) for the full set of commands and flags.
+    See the [CLI reference](https://docs.anthropic.com/en/cli-reference) for the full set of commands and flags.
   </Accordion>
 
   <Accordion title="Work from anywhere" icon="globe">
     Sessions aren't tied to a single surface. Move work between environments as your context changes:
 
-    * Step away from your desk and keep working from your phone or any browser with [Remote Control](/en/remote-control)
-    * Kick off a long-running task on the [web](/en/claude-code-on-the-web) or [iOS app](https://apps.apple.com/app/claude-by-anthropic/id6473753684), then pull it into your terminal with `/teleport`
-    * Hand off a terminal session to the [Desktop app](/en/desktop) with `/desktop` for visual diff review
-    * Route tasks from team chat: mention `@Claude` in [Slack](/en/slack) with a bug report and get a pull request back
+    * Step away from your desk and keep working from your phone or any browser with [Remote Control](https://docs.anthropic.com/en/remote-control)
+    * Kick off a long-running task on the [web](https://docs.anthropic.com/en/claude-code-on-the-web) or [iOS app](https://apps.apple.com/app/claude-by-anthropic/id6473753684), then pull it into your terminal with `/teleport`
+    * Hand off a terminal session to the [Desktop app](https://docs.anthropic.com/en/desktop) with `/desktop` for visual diff review
+    * Route tasks from team chat: mention `@Claude` in [Slack](https://docs.anthropic.com/en/slack) with a bug report and get a pull request back
   </Accordion>
 </AccordionGroup>
 
@@ -200,24 +200,24 @@ Here are some of the ways you can use Claude Code:
 
 Each surface connects to the same underlying Claude Code engine, so your CLAUDE.md files, settings, and MCP servers work across all of them.
 
-Beyond the [Terminal](/en/quickstart), [VS Code](/en/vs-code), [JetBrains](/en/jetbrains), [Desktop](/en/desktop), and [Web](/en/claude-code-on-the-web) environments above, Claude Code integrates with CI/CD, chat, and browser workflows:
+Beyond the [Terminal](https://docs.anthropic.com/en/quickstart), [VS Code](https://docs.anthropic.com/en/vs-code), [JetBrains](https://docs.anthropic.com/en/jetbrains), [Desktop](https://docs.anthropic.com/en/desktop), and [Web](https://docs.anthropic.com/en/claude-code-on-the-web) environments above, Claude Code integrates with CI/CD, chat, and browser workflows:
 
 | I want to...                                             | Best option                                                                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Continue a local session from my phone or another device | [Remote Control](/en/remote-control)                                                                               |
-| Start a task locally, continue on mobile                 | [Web](/en/claude-code-on-the-web) or [Claude iOS app](https://apps.apple.com/app/claude-by-anthropic/id6473753684) |
-| Automate PR reviews and issue triage                     | [GitHub Actions](/en/github-actions) or [GitLab CI/CD](/en/gitlab-ci-cd)                                           |
-| Route bug reports from Slack to pull requests            | [Slack](/en/slack)                                                                                                 |
-| Debug live web applications                              | [Chrome](/en/chrome)                                                                                               |
+| Continue a local session from my phone or another device | [Remote Control](https://docs.anthropic.com/en/remote-control)                                                                               |
+| Start a task locally, continue on mobile                 | [Web](https://docs.anthropic.com/en/claude-code-on-the-web) or [Claude iOS app](https://apps.apple.com/app/claude-by-anthropic/id6473753684) |
+| Automate PR reviews and issue triage                     | [GitHub Actions](https://docs.anthropic.com/en/github-actions) or [GitLab CI/CD](https://docs.anthropic.com/en/gitlab-ci-cd)                                           |
+| Route bug reports from Slack to pull requests            | [Slack](https://docs.anthropic.com/en/slack)                                                                                                 |
+| Debug live web applications                              | [Chrome](https://docs.anthropic.com/en/chrome)                                                                                               |
 | Build custom agents for your own workflows               | [Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview)                                                |
 
 ## Next steps
 
 Once you've installed Claude Code, these guides help you go deeper.
 
-* [Quickstart](/en/quickstart): walk through your first real task, from exploring a codebase to committing a fix
-* [Store instructions and memories](/en/memory): give Claude persistent instructions with CLAUDE.md files and auto memory
-* [Common workflows](/en/common-workflows) and [best practices](/en/best-practices): patterns for getting the most out of Claude Code
-* [Settings](/en/settings): customize Claude Code for your workflow
-* [Troubleshooting](/en/troubleshooting): solutions for common issues
+* [Quickstart](https://docs.anthropic.com/en/quickstart): walk through your first real task, from exploring a codebase to committing a fix
+* [Store instructions and memories](https://docs.anthropic.com/en/memory): give Claude persistent instructions with CLAUDE.md files and auto memory
+* [Common workflows](https://docs.anthropic.com/en/common-workflows) and [best practices](https://docs.anthropic.com/en/best-practices): patterns for getting the most out of Claude Code
+* [Settings](https://docs.anthropic.com/en/settings): customize Claude Code for your workflow
+* [Troubleshooting](https://docs.anthropic.com/en/troubleshooting): solutions for common issues
 * [code.claude.com](https://code.claude.com/): demos, pricing, and product details

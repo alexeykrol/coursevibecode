@@ -22,7 +22,7 @@ Desktop adds these capabilities on top of the standard Claude Code experience:
 * Local, [SSH](#ssh-sessions), and [cloud](#run-long-running-tasks-remotely) environments
 
 <Tip>
-  New to Desktop? Start with [Get started](/en/desktop-quickstart) to install the app and make your first edit.
+  New to Desktop? Start with [Get started](https://docs.anthropic.com/en/desktop-quickstart) to install the app and make your first edit.
 </Tip>
 
 This page covers [working with code](#work-with-code), [managing sessions](#manage-sessions), [extending Claude Code](#extend-claude-code), [scheduled tasks](#schedule-recurring-tasks), and [configuration](#environment-configuration). It also includes a [CLI autonomy/comparison](#coming-from-the-cli) and [troubleshooting](#troubleshooting).
@@ -33,7 +33,7 @@ Before you send your first message, configure four things in the prompt area:
 
 * **Environment**: choose where Claude runs. Select **Local** for your machine, **Remote** for Anthropic-hosted cloud sessions, or an [**SSH connection**](#ssh-sessions) for a remote machine you manage. See [environment configuration](#environment-configuration).
 * **Project folder**: select the folder or repository Claude works in. For remote sessions, you can add [multiple repositories](#run-long-running-tasks-remotely).
-* **Model**: pick a [model](/en/model-config#available-models) from the dropdown next to the send button. The model is locked once the session starts.
+* **Model**: pick a [model](https://docs.anthropic.com/en/model-config#available-models) from the dropdown next to the send button. The model is locked once the session starts.
 * **Permission mode**: choose how much autonomy Claude has from the [mode selector](#choose-a-permission-mode). You can change this during the session.
 
 Type your task and press **Enter** to start. Each session tracks its own context and changes independently.
@@ -66,10 +66,10 @@ Permission modes control how much autonomy Claude has during a session: whether 
 | **Plan mode**          | `plan`              | Claude analyzes your code and creates a plan without modifying files or running commands. Good for complex tasks where you want to review the approach first.                                                                                                                |
 | **Bypass permissions** | `bypassPermissions` | Claude runs without any permission prompts, equivalent to `--dangerously-skip-permissions` in the CLI. Enable in your Settings → Claude Code under "Allow bypass permissions mode". Only use this in sandboxed containers or VMs. Enterprise admins can disable this option. |
 
-The `dontAsk` permission mode is available only in the [CLI](/en/permissions#permission-modes).
+The `dontAsk` permission mode is available only in the [CLI](https://docs.anthropic.com/en/permissions#permission-modes).
 
 <Tip title="Best practice">
-  Start complex tasks in Plan mode so Claude maps out an approach before making changes. Once you approve the plan, switch to Auto accept edits or Ask permissions to execute it. See [explore first, then plan, then code](/en/best-practices#explore-first-then-plan-then-code) for more on this workflow.
+  Start complex tasks in Plan mode so Claude maps out an approach before making changes. Once you approve the plan, switch to Auto accept edits or Ask permissions to execute it. See [explore first, then plan, then code](https://docs.anthropic.com/en/best-practices#explore-first-then-plan-then-code) for more on this workflow.
 </Tip>
 
 Remote sessions support Auto accept edits and Plan mode. Ask permissions is not available because remote sessions auto-accept file edits by default, and Bypass permissions is not available because the remote environment is already sandboxed.
@@ -130,7 +130,7 @@ Each session is an independent conversation with its own context and changes. Yo
 
 ### Work in parallel with sessions
 
-Click **+ New session** in the sidebar to work on multiple tasks in parallel. For Git repositories, each session gets its own isolated copy of your project using [Git worktrees](/en/common-workflows#run-parallel-claude-code-sessions-with-git-worktrees), so changes in one session don't affect other sessions until you commit them.
+Click **+ New session** in the sidebar to work on multiple tasks in parallel. For Git repositories, each session gets its own isolated copy of your project using [Git worktrees](https://docs.anthropic.com/en/common-workflows#run-parallel-claude-code-sessions-with-git-worktrees), so changes in one session don't affect other sessions until you commit them.
 
 Worktrees are stored in `<project-root>/.claude/worktrees` by default. You can change this to a custom directory in Settings → Claude Code under "Worktree location". You can also set a branch prefix that gets prepended to every worktree branch name, which is useful for keeping Claude-created branches organized. To remove a worktree when you're done, hover over the session in the sidebar and click the archive icon.
 
@@ -138,7 +138,7 @@ Worktrees are stored in `<project-root>/.claude/worktrees` by default. You can c
   Session isolation requires [Git](https://git-scm.com/downloads). Most Macs include Git by default. Run `git --version` in Terminal to check. On Windows, Git is required for the Code tab to work: [download Git for Windows](https://git-scm.com/downloads/win), install it, and restart the app. If you run into Git errors, try a Cowork session to help troubleshoot your setup.
 </Note>
 
-Use the filter icon at the top of the sidebar to filter sessions by status (Active, Archived) and environment (Local, Cloud). To rename a session or check context usage, click the session title in the toolbar at the top of the active session. When context fills up, Claude automatically summarizes the conversation and continues working. You can also type `/compact` to trigger summarization earlier and free up context space. See [the context window](/en/how-claude-code-works#the-context-window) for details on how compaction works.
+Use the filter icon at the top of the sidebar to filter sessions by status (Active, Archived) and environment (Local, Cloud). To rename a session or check context usage, click the session title in the toolbar at the top of the active session. When context fills up, Claude automatically summarizes the conversation and continues working. You can also type `/compact` to trigger summarization earlier and free up context space. See [the context window](https://docs.anthropic.com/en/how-claude-code-works#the-context-window) for details on how compaction works.
 
 ### Run long-running tasks remotely
 
@@ -146,7 +146,7 @@ For large refactors, test suites, migrations, or other long-running tasks, selec
 
 Remote sessions also support multiple repositories. After selecting a cloud environment, click the **+** button next to the repo pill to add additional repositories to the session. Each repo gets its own branch selector. This is useful for tasks that span multiple codebases, such as updating a shared library and its consumers.
 
-See [Claude Code on the web](/en/claude-code-on-the-web) for more on how remote sessions work.
+See [Claude Code on the web](https://docs.anthropic.com/en/claude-code-on-the-web) for more on how remote sessions work.
 
 ### Continue in another surface
 
@@ -167,19 +167,19 @@ To manage or disconnect connectors, go to Settings → Connectors in the desktop
 
 Once connected, Claude can read your calendar, send messages, create issues, and interact with your tools directly. You can ask Claude what connectors are configured in your session.
 
-Connectors are [MCP servers](/en/mcp) with a graphical setup flow. Use them for quick integration with supported services. For integrations not listed in Connectors, add MCP servers manually via [settings files](/en/mcp#installing-mcp-servers). You can also [create custom connectors](https://support.claude.com/en/articles/11175166-getting-started-with-custom-connectors-using-remote-mcp).
+Connectors are [MCP servers](https://docs.anthropic.com/en/mcp) with a graphical setup flow. Use them for quick integration with supported services. For integrations not listed in Connectors, add MCP servers manually via [settings files](https://docs.anthropic.com/en/mcp#installing-mcp-servers). You can also [create custom connectors](https://support.claude.com/en/articles/11175166-getting-started-with-custom-connectors-using-remote-mcp).
 
 ### Use skills
 
-[Skills](/en/skills) extend what Claude can do. Claude loads them automatically when relevant, or you can invoke one directly: type `/` in the prompt box or click the **+** button and select **Slash commands** to browse what's available. This includes [built-in commands](/en/interactive-mode#built-in-commands), your [custom skills](/en/skills#create-custom-skills), project skills from your codebase, and skills from any [installed plugins](/en/plugins). Select one and it appears highlighted in the input field. Type your task after it and send as usual.
+[Skills](https://docs.anthropic.com/en/skills) extend what Claude can do. Claude loads them automatically when relevant, or you can invoke one directly: type `/` in the prompt box or click the **+** button and select **Slash commands** to browse what's available. This includes [built-in commands](https://docs.anthropic.com/en/interactive-mode#built-in-commands), your [custom skills](https://docs.anthropic.com/en/skills#create-custom-skills), project skills from your codebase, and skills from any [installed plugins](https://docs.anthropic.com/en/plugins). Select one and it appears highlighted in the input field. Type your task after it and send as usual.
 
 ### Install plugins
 
-[Plugins](/en/plugins) are reusable packages that add skills, agents, hooks, MCP servers, and LSP configurations to Claude Code. You can install plugins from the desktop app without using the terminal.
+[Plugins](https://docs.anthropic.com/en/plugins) are reusable packages that add skills, agents, hooks, MCP servers, and LSP configurations to Claude Code. You can install plugins from the desktop app without using the terminal.
 
-For local and [SSH](#ssh-sessions) sessions, click the **+** button next to the prompt box and select **Plugins** to see your installed plugins and their commands. To add a plugin, select **Add plugin** from the submenu to open the plugin browser, which shows available plugins from your configured [marketplaces](/en/plugin-marketplaces) including the official Anthropic marketplace. Select **Manage plugins** to enable, disable, or uninstall plugins.
+For local and [SSH](#ssh-sessions) sessions, click the **+** button next to the prompt box and select **Plugins** to see your installed plugins and their commands. To add a plugin, select **Add plugin** from the submenu to open the plugin browser, which shows available plugins from your configured [marketplaces](https://docs.anthropic.com/en/plugin-marketplaces) including the official Anthropic marketplace. Select **Manage plugins** to enable, disable, or uninstall plugins.
 
-Plugins can be scoped to your user account, a specific project, or local-only. Plugins are not available for remote sessions. For the full plugin reference including creating your own plugins, see [plugins](/en/plugins).
+Plugins can be scoped to your user account, a specific project, or local-only. Plugins are not available for remote sessions. For the full plugin reference including creating your own plugins, see [plugins](https://docs.anthropic.com/en/plugins).
 
 ### Configure preview servers
 
@@ -386,7 +386,7 @@ Click a task in the **Schedule** list to open its detail page. From here you can
 
 You can also manage tasks by asking Claude in any Desktop session. For example, "pause my dependency-audit task", "delete the standup-prep task", or "show me my scheduled tasks."
 
-To edit a task's prompt on disk, open `~/.claude/scheduled-tasks/<task-name>/SKILL.md` (or under [`CLAUDE_CONFIG_DIR`](/en/settings#environment-variables) if set). The file uses YAML frontmatter for `name` and `description`, with the prompt as the body. Changes take effect on the next run. Schedule, folder, model, and enabled state are not in this file: change them through the Edit form or ask Claude.
+To edit a task's prompt on disk, open `~/.claude/scheduled-tasks/<task-name>/SKILL.md` (or under [`CLAUDE_CONFIG_DIR`](https://docs.anthropic.com/en/settings#environment-variables) if set). The file uses YAML frontmatter for `name` and `description`, with the prompt as the body. Changes take effect on the next run. Schedule, folder, model, and enabled state are not in this file: change them through the Edit form or ask Claude.
 
 ## Environment configuration
 
@@ -398,15 +398,15 @@ The environment you pick when [starting a session](#start-a-session) determines 
 
 ### Local sessions
 
-Local sessions inherit environment variables from your shell. If you need additional variables, set them in your shell profile, such as `~/.zshrc` or `~/.bashrc`, and restart the desktop app. See [environment variables](/en/settings#environment-variables) for the full list of supported variables.
+Local sessions inherit environment variables from your shell. If you need additional variables, set them in your shell profile, such as `~/.zshrc` or `~/.bashrc`, and restart the desktop app. See [environment variables](https://docs.anthropic.com/en/settings#environment-variables) for the full list of supported variables.
 
-[Extended thinking](/en/common-workflows#use-extended-thinking-thinking-mode) is enabled by default, which improves performance on complex reasoning tasks but uses additional tokens. To disable thinking entirely, set `MAX_THINKING_TOKENS=0` in your shell profile. On Opus, `MAX_THINKING_TOKENS` is ignored except for `0` because adaptive reasoning controls thinking depth instead.
+[Extended thinking](https://docs.anthropic.com/en/common-workflows#use-extended-thinking-thinking-mode) is enabled by default, which improves performance on complex reasoning tasks but uses additional tokens. To disable thinking entirely, set `MAX_THINKING_TOKENS=0` in your shell profile. On Opus, `MAX_THINKING_TOKENS` is ignored except for `0` because adaptive reasoning controls thinking depth instead.
 
 ### Remote sessions
 
-Remote sessions continue in the background even if you close the app. Usage counts toward your [subscription plan limits](/en/costs) with no separate compute charges.
+Remote sessions continue in the background even if you close the app. Usage counts toward your [subscription plan limits](https://docs.anthropic.com/en/costs) with no separate compute charges.
 
-You can create custom cloud environments with different network access levels and environment variables. Select the environment dropdown when starting a remote session and choose **Add environment**. See [cloud environments](/en/claude-code-on-the-web#cloud-environment) for details on configuring network access and environment variables.
+You can create custom cloud environments with different network access levels and environment variables. Select the environment dropdown when starting a remote session and choose **Add environment**. See [cloud environments](https://docs.anthropic.com/en/claude-code-on-the-web#cloud-environment) for details on configuring network access and environment variables.
 
 ### SSH sessions
 
@@ -437,13 +437,13 @@ These settings are configured through the [admin settings console](https://claud
 
 ### Managed settings
 
-Managed settings override project and user settings and apply when Desktop spawns CLI sessions. You can set these keys in your organization's [managed settings](/en/settings#settings-precedence) file or push them remotely through the admin console.
+Managed settings override project and user settings and apply when Desktop spawns CLI sessions. You can set these keys in your organization's [managed settings](https://docs.anthropic.com/en/settings#settings-precedence) file or push them remotely through the admin console.
 
 | Key                            | Description                                                                                                                               |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `disableBypassPermissionsMode` | set to `"disable"` to prevent users from enabling Bypass permissions mode. See [managed settings](/en/permissions#managed-only-settings). |
+| `disableBypassPermissionsMode` | set to `"disable"` to prevent users from enabling Bypass permissions mode. See [managed settings](https://docs.anthropic.com/en/permissions#managed-only-settings). |
 
-For the complete list of managed-only settings including `allowManagedPermissionRulesOnly` and `allowManagedHooksOnly`, see [managed-only settings](/en/permissions#managed-only-settings).
+For the complete list of managed-only settings including `allowManagedPermissionRulesOnly` and `allowManagedHooksOnly`, see [managed-only settings](https://docs.anthropic.com/en/permissions#managed-only-settings).
 
 Remote managed settings uploaded through the admin console currently apply to CLI and IDE sessions only. For Desktop-specific restrictions, use the admin console controls above.
 
@@ -456,11 +456,11 @@ IT teams can manage the desktop app through MDM on macOS or group policy on Wind
 
 ### Authentication and SSO
 
-Enterprise organizations can require SSO for all users. See [authentication](/en/authentication) for plan-level details and [Setting up SSO](https://support.claude.com/en/articles/13132885-setting-up-single-sign-on-sso) for SAML and OIDC configuration.
+Enterprise organizations can require SSO for all users. See [authentication](https://docs.anthropic.com/en/authentication) for plan-level details and [Setting up SSO](https://support.claude.com/en/articles/13132885-setting-up-single-sign-on-sso) for SAML and OIDC configuration.
 
 ### Data handling
 
-Claude Code processes your code locally in local sessions or on Anthropic's cloud infrastructure in remote sessions. Conversations and code context are sent to Anthropic's API for processing. See [data handling](/en/data-usage) for details on data retention, privacy, and compliance.
+Claude Code processes your code locally in local sessions or on Anthropic's cloud infrastructure in remote sessions. Conversations and code context are sent to Anthropic's API for processing. See [data handling](https://docs.anthropic.com/en/data-usage) for details on data retention, privacy, and compliance.
 
 ### Deployment
 
@@ -469,7 +469,7 @@ Desktop can be distributed through enterprise deployment tools:
 * **macOS**: distribute via MDM such as Jamf or Kandji using the `.dmg` installer
 * **Windows**: deploy via MSIX package or `.exe` installer. See [Deploy Claude Desktop for Windows](https://support.claude.com/en/articles/12622703-deploy-claude-desktop-for-windows) for enterprise deployment options including silent installation
 
-For network configuration such as proxy settings, firewall allowlisting, and LLM gateways, see [network configuration](/en/network-config).
+For network configuration such as proxy settings, firewall allowlisting, and LLM gateways, see [network configuration](https://docs.anthropic.com/en/network-config).
 
 For the full enterprise configuration reference, see the [enterprise configuration guide](https://support.claude.com/en/articles/12622667-enterprise-configuration).
 
@@ -504,42 +504,42 @@ This table shows the desktop app equivalent for common CLI flags. Flags not list
 
 Desktop and CLI read the same configuration files, so your setup carries over:
 
-* **[CLAUDE.md](/en/memory)** files in your project are used by both
-* **[MCP servers](/en/mcp)** configured in `~/.claude.json` or `.mcp.json` work in both
-* **[Hooks](/en/hooks)** and **[skills](/en/skills)** defined in settings apply to both
-* **[Settings](/en/settings)** in `~/.claude.json` and `~/.claude/settings.json` are shared. Permission rules, allowed tools, and other settings in `settings.json` apply to Desktop sessions.
+* **[CLAUDE.md](https://docs.anthropic.com/en/memory)** files in your project are used by both
+* **[MCP servers](https://docs.anthropic.com/en/mcp)** configured in `~/.claude.json` or `.mcp.json` work in both
+* **[Hooks](https://docs.anthropic.com/en/hooks)** and **[skills](https://docs.anthropic.com/en/skills)** defined in settings apply to both
+* **[Settings](https://docs.anthropic.com/en/settings)** in `~/.claude.json` and `~/.claude/settings.json` are shared. Permission rules, allowed tools, and other settings in `settings.json` apply to Desktop sessions.
 * **Models**: Sonnet, Opus, and Haiku are available in both. In Desktop, select the model from the dropdown next to the send button before starting a session. You cannot change the model during an active session.
 
 <Note>
-  **MCP servers: desktop chat app vs Claude Code**: MCP servers configured for the Claude Desktop chat app in `claude_desktop_config.json` are separate from Claude Code and will not appear in the Code tab. To use MCP servers in Claude Code, configure them in `~/.claude.json` or your project's `.mcp.json` file. See [MCP configuration](/en/mcp#installing-mcp-servers) for details.
+  **MCP servers: desktop chat app vs Claude Code**: MCP servers configured for the Claude Desktop chat app in `claude_desktop_config.json` are separate from Claude Code and will not appear in the Code tab. To use MCP servers in Claude Code, configure them in `~/.claude.json` or your project's `.mcp.json` file. See [MCP configuration](https://docs.anthropic.com/en/mcp#installing-mcp-servers) for details.
 </Note>
 
 ### Feature autonomy/comparison
 
-This table compares autonomy/core capabilities between the CLI and Desktop. For a full list of CLI flags, see the [CLI reference](/en/cli-reference).
+This table compares autonomy/core capabilities between the CLI and Desktop. For a full list of CLI flags, see the [CLI reference](https://docs.anthropic.com/en/cli-reference).
 
 | Feature                                               | CLI                                                       | Desktop                                                                                     |
 | ----------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | Permission modes                                      | all modes including `dontAsk`                             | Ask permissions, Auto accept edits, Plan mode, and Bypass permissions via Settings          |
 | `--dangerously-skip-permissions`                      | CLI flag                                                  | Bypass permissions mode. Enable in Settings → Claude Code → "Allow bypass permissions mode" |
-| [Third-party providers](/en/third-party-integrations) | Bedrock, Vertex, Foundry                                  | not available. Desktop connects to Anthropic's API directly.                                |
-| [MCP servers](/en/mcp)                                | configure in settings files                               | Connectors UI for local and SSH sessions, or settings files                                 |
-| [Plugins](/en/plugins)                                | `/plugin` command                                         | plugin manager UI                                                                           |
+| [Third-party providers](https://docs.anthropic.com/en/third-party-integrations) | Bedrock, Vertex, Foundry                                  | not available. Desktop connects to Anthropic's API directly.                                |
+| [MCP servers](https://docs.anthropic.com/en/mcp)                                | configure in settings files                               | Connectors UI for local and SSH sessions, or settings files                                 |
+| [Plugins](https://docs.anthropic.com/en/plugins)                                | `/plugin` command                                         | plugin manager UI                                                                           |
 | @mention files                                        | text-based                                                | with autocomplete                                                                           |
 | File attachments                                      | not available                                             | images, PDFs                                                                                |
-| Session isolation                                     | [`--worktree`](/en/cli-reference) flag                    | automatic worktrees                                                                         |
+| Session isolation                                     | [`--worktree`](https://docs.anthropic.com/en/cli-reference) flag                    | automatic worktrees                                                                         |
 | Multiple sessions                                     | separate terminals                                        | sidebar tabs                                                                                |
 | Recurring tasks                                       | cron jobs, CI pipelines                                   | [scheduled tasks](#schedule-recurring-tasks)                                                |
-| Scripting and automation                              | [`--print`](/en/cli-reference), [Agent SDK](/en/headless) | not available                                                                               |
+| Scripting and automation                              | [`--print`](https://docs.anthropic.com/en/cli-reference), [Agent SDK](https://docs.anthropic.com/en/headless) | not available                                                                               |
 
 ### What's not available in Desktop
 
 The following features are only available in the CLI or VS Code extension:
 
-* **Third-party providers**: Desktop connects to Anthropic's API directly. Use the [CLI](/en/quickstart) with Bedrock, Vertex, or Foundry instead.
+* **Third-party providers**: Desktop connects to Anthropic's API directly. Use the [CLI](https://docs.anthropic.com/en/quickstart) with Bedrock, Vertex, or Foundry instead.
 * **Linux**: the desktop app is available on macOS and Windows only.
 * **Inline code suggestions**: Desktop does not provide autocomplete-style suggestions. It works through conversational prompts and explicit code changes.
-* **Agent teams**: multi-agent orchestration is available via the [CLI](/en/agent-teams) and [Agent SDK](/en/headless), not in Desktop.
+* **Agent teams**: multi-agent orchestration is available via the [CLI](https://docs.anthropic.com/en/agent-teams) and [Agent SDK](https://docs.anthropic.com/en/headless), not in Desktop.
 
 ## Troubleshooting
 
